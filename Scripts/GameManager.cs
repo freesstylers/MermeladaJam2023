@@ -3,8 +3,19 @@ using System;
 
 public class GameManager : Node
 {
-	private int score;
+	private readonly static GameManager _instance = new GameManager();
 	
+	private GameManager() {
+		
+	}
+	
+	public static GameManager Instance {
+		get{
+			return _instance;
+		}
+	}
+	
+	private int score;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -17,4 +28,9 @@ public class GameManager : Node
   	{
 	  
   	}
+	
+	public void AddScore(int num) {
+		score+=num;
+		GD.Print(num);
+	}
 }

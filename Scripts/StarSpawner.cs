@@ -15,8 +15,6 @@ public class StarSpawner : Area2D
 	[Export]
 	public PackedScene starScene { get; set; }
 	
-	private CollisionShape2D spawnArea;
-	
 	private float spawnTime;
 	private float spawnCD;
 	
@@ -25,8 +23,6 @@ public class StarSpawner : Area2D
 	{
 		spawnCD = 0.0f;
 		spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;
-		GD.Print(spawnTime);
-		spawnArea = GetNode<CollisionShape2D>("CollisionShape2D");
 		
 		inputManager = GetTree().Root.GetNode("Node2D").GetNode("InputManager") as InputManager;
 	}
@@ -48,9 +44,9 @@ public class StarSpawner : Area2D
 		Star star = starScene.Instance<Star>();
 		star.SetInputManager(inputManager);
 		AddChild(star);
-		int randomX = (int)(GD.Randi() % 100);
+		int randomX = (int)(GD.Randi() % 50);
 		GD.Print(randomX);
-		int randomY = (int)(GD.Randi() % 100);
+		int randomY = (int)(GD.Randi() % 50);
 		GD.Print(randomY);
 		star.Position = new Vector2(randomX, randomY);
 			
