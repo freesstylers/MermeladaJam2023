@@ -1,5 +1,7 @@
 extends Node
 
+signal normalMode
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -8,8 +10,9 @@ func _ready():
 #func _process(delta):
 #	pass
 
+
 func NormalMode():
-	get_tree().change_scene("res://Escenas/MainScene.tscn")
+	emit_signal("normalMode")
 	pass # Replace with function body.
 
 func EndlessMode():
