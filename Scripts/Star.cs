@@ -19,9 +19,7 @@ public class Star : RigidBody2D
 	
 	public StarSpawner starManager=null;
 	
-	private float deathCD;
-	float deathTime = 1.0f;
-	
+	private float deathCD;	
 	private bool caught;
 	
 	private float opacityDeathTime;
@@ -66,7 +64,8 @@ public class Star : RigidBody2D
 				}
 				break;
 			case StarState.PREPARED:
-				if(true || !caught && deathCD >= deathTime*catchPercentage && GotInput()) {
+				if(!caught && deathCD >= deathTime*catchPercentage && GotInput()) //true || for testing
+				{
 					caught = true;
 					int baseScore = 50;
 					float restPercentage = 1 - catchPercentage;

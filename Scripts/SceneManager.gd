@@ -1,6 +1,7 @@
 extends Node
 
 const GameplayScene = preload("res://Escenas/MainScene.tscn")
+var endless = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -23,5 +24,16 @@ func _on_CanvasLayer_transitioned():
 
 
 func _on_Control_normalMode():
+	endless = false
 	$CanvasLayer.transition()
 	pass # Replace with function body.
+
+
+func _on_Control_endlessMode():
+	endless = true
+	$CanvasLayer.transition()
+	pass # Replace with function body.
+
+func onEnd():
+	print("ENDED")
+	pass

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Escenas/MainMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Escenas/TransitionScreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/SceneManager.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/GameManager.cs" type="Script" id=4]
 
 [node name="SceneManager" type="Node"]
 script = ExtResource( 3 )
@@ -13,5 +14,9 @@ script = ExtResource( 3 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 2 )]
 
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[connection signal="endlessMode" from="CurrentScene/Control" to="." method="_on_Control_endlessMode"]
 [connection signal="normalMode" from="CurrentScene/Control" to="." method="_on_Control_normalMode"]
 [connection signal="transitioned" from="CanvasLayer" to="." method="_on_CanvasLayer_transitioned"]

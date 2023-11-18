@@ -5,6 +5,35 @@ extends Node
 # var b = "text"
 
 var timer
+var secTime = 0
+var minTime = 0
+var timerEnded = false
+var speedUp = 1
+
+func _process(delta):	
+	secTime += speedUp * delta	
+	
+	if (timerEnded):
+		return
+	
+	if (secTime >= 60):		
+		if (minTime < 59):
+			minTime += 1
+			if (minTime < 10):
+				$CanvasLayer/HBoxContainer/MarginContainer2/HBoxContainer2/Label2.text = "0" + str(minTime).pad_decimals(0)
+			else:
+				$CanvasLayer/HBoxContainer/MarginContainer2/HBoxContainer2/Label2.text = str(minTime).pad_decimals(0)
+			secTime = 0
+		else:
+			secTime = 59
+			timerEnded = true
+			
+	if (secTime < 10):
+		$CanvasLayer/HBoxContainer/MarginContainer2/HBoxContainer2/Label4.text = "0" + str(secTime).pad_decimals(0)
+	else:
+		$CanvasLayer/HBoxContainer/MarginContainer2/HBoxContainer2/Label4.text = str(secTime).pad_decimals(0)
+	pass
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,7 +53,6 @@ func _on_timer_timeout():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if (anim_name == "ParpadeoArribaIn"):
