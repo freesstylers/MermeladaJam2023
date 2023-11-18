@@ -24,7 +24,7 @@ public class StarSpawner : Area2D
 		spawnCD = 0.0f;
 		spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;
 		
-		inputManager = GetTree().Root.GetNode("Node2D").GetNode("InputManager") as InputManager;
+		inputManager = GetTree().Root.GetNode("Control/Node2D").GetNode("CanvasLayer/InputManager") as InputManager;
 	}
 
   	// Called every frame. 'delta' is the elapsed time since the previous frame.
