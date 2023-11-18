@@ -23,6 +23,8 @@ public class StarSpawner : Area2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		SetPosition(new Vector2(GetViewport().Size.x*0.8f,0));
+		
 		spawnCD = 0.0f;
 		spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;
 		starList = new List<Star>();
