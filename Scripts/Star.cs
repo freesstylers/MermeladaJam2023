@@ -23,6 +23,10 @@ public class Star : RigidBody2D
 	
 	private bool caught;
 	
+	private float opacity;
+	private float opacityDeathTime;
+	private float opacityDeathCD;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -30,6 +34,10 @@ public class Star : RigidBody2D
 		caught = false;
 		catchPercentage = 0.5f + GD.Randf()*0.2f;
 		state = StarState.NOT_PREPARED;
+		
+		opacity = 1.0f;
+		opacityDeathTime = 0.0f;
+		opacityDeathCD = 0.0f;
 	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,7 +53,8 @@ public class Star : RigidBody2D
 				}
 				else if(Input.IsActionPressed("Catch")) {
 					state = StarState.DEAD;
-					GetNode<Sprite>("Sprite").Modulate = new Color(1,0,0);
+					GetNode<Sprite>("Sprite").Modulate = new Color(1,0,0,1);
+					opacityDeathTime = (deathTime-deathCD)/4;
 				}
 				break;
 			case StarState.PREPARED:
@@ -60,13 +69,18 @@ public class Star : RigidBody2D
 					GameManager.Instance.AddScore(baseScore + (int)percentageBonusScore);
 					state = StarState.CAUGHT;
 					GetNode<Sprite>("Sprite").Modulate = new Color(0,1,0);
+					opacityDeathTime = (deathTime-deathCD)/4;
 				}
 				break;
 			case StarState.CAUGHT:
-				//Dejar que muera
+				//FadeOut del objeto hasta la muerte
+				opacityDeathCD+=delta;
+				GetNode<Sprite>("Sprite").Modulate = new Color(0,1,0, opacityDeathTime/opacityDeathCD);
 				break;
 			case StarState.DEAD:
 				//FadeOut del objeto hasta la muerte
+				opacityDeathCD+=delta;
+				GetNode<Sprite>("Sprite").Modulate = new Color(1,0,0, opacityDeathTime/opacityDeathCD);
 				break;
 		}
 		
