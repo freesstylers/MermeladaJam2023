@@ -75,14 +75,16 @@ public class StarSpawner : Area2D
 	
 	private void GiveRandomPosDir(ref Star star) {
 		Vector2 direction = new Vector2(0,0);
+		int randomX = 0;
+		int randomY = 0;
 		//Estrella fugaz
 		if(GD.Randi()%2 == 0) {
 			bool fromRight = (GD.Randi()%2 == 0);
 			star.SetDeathTime(starLife);
-			int randomX = (int)(GD.Randi() % 50);
+			randomX = (int)(GD.Randi() % 50);
 			if(fromRight) randomX = (int)(GD.Randi() % 50)+(int)(Position.x);
-			int randomY = 0;
-			star.GlobalPosition = new Vector2(randomX, randomY);
+			randomY = 0;
+			star.GlobalPosition = new Vector2(0, 0);
 			
 			int xDir = -1;
 			if(fromRight) xDir = 1;
@@ -91,21 +93,21 @@ public class StarSpawner : Area2D
 		//Cobete
 		else {
 			star.SetDeathTime(rocketLife);
-			int randomX = (int)(GD.Randi() % GetViewport().Size.x);
-			int randomY = (int)(GetViewport().Size.y);
-			star.GlobalPosition = new Vector2(randomX, randomY);
+			randomX = (int)(GD.Randi() % GetViewport().Size.x);
+			randomY = (int)(GetViewport().Size.y);
+			star.GlobalPosition = new Vector2(0, 0);
 			
 			direction = new Vector2(0, -1);
 		}
-		direction = direction.Normalized();
-		star.LinearVelocity = direction * starSpeed;
-		
+		direction = direction.Normalized();		
+		Vector2 startPoint = new Vector2(randomX, randomY);
+		Vector2 endPoint = startPoint + (direction*GetViewport().Size.y);
+		star.CreatePath(startPoint, endPoint, 0.25f, -0.5f, 0.25f, 0.5f, 20, 2f);
 	}
 	
-	public void DeathOfAStar() {
-		if(starList.Count > 0) {
-			starList.RemoveAt(0);
-		}
+	public void DeathOfAStar(Star star) {
+		if(starList.IndexOf(star)>=0)
+			starList.RemoveAt(starList.IndexOf(star));
 	}
 	
 	public bool IsStarFront(Star star) {

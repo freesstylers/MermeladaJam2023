@@ -17,7 +17,6 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="RigidBody2D" type="RigidBody2D"]
-position = Vector2( 296, 400 )
 collision_layer = 0
 gravity_scale = 0.0
 script = ExtResource( 2 )
@@ -76,7 +75,6 @@ color_ramp = SubResource( 2 )
 anim_speed_random = 1.0
 
 [node name="ExplotionReadyParticles" type="CPUParticles2D" parent="StarPath/StarPathFollower/StarSprite"]
-position = Vector2( 407.735, -100.88 )
 rotation = -0.25445
 scale = Vector2( 5, 5 )
 emitting = false
