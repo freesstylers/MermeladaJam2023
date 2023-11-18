@@ -31,7 +31,7 @@ public class Star : RigidBody2D
 	{
 		deathCD = 0.0f;
 		caught = false;
-		catchPercentage = 0.5f + GD.Randf()*0.2f;
+		catchPercentage = 0.2f + GD.Randf()*0.2f;
 		state = StarState.NOT_PREPARED;
 		
 		opacityDeathTime = 0.0f;

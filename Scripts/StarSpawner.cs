@@ -67,7 +67,6 @@ public class StarSpawner : Area2D
 	
 	public bool ShouldGetInput(Star star) {
 		int starPos = starList.IndexOf(star);
-		GD.Print(starPos);
 		
 		for(int i = 0; i < starPos; i++) {
 			if(starList.ElementAt(i).GetState() == Star.StarState.PREPARED) {

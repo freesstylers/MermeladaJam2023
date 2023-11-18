@@ -32,4 +32,8 @@ public class GameManager : Node
 	public void AddScore(int num) {
 		score+=num;
 	}
+	
+	public int GetScore() {
+		return score;
+	}
 }
