@@ -16,6 +16,7 @@ public class Star : RigidBody2D
 	
 	public StarSpawner starManager=null;
 	
+	private float deathTime;
 	private float deathCD;	
 	private bool caught;
 	
@@ -55,6 +56,7 @@ public class Star : RigidBody2D
 					state = StarState.PREPARED;
 					AdjustStarColors(new Color(1,1,0));
 					explosionReadyParticles.Emitting = true;
+					opacityDeathTime = (deathTime-deathCD)/4;
 				}
 				else if(GotInput()) {
 					state = StarState.DEAD;
@@ -64,6 +66,8 @@ public class Star : RigidBody2D
 				}
 				break;
 			case StarState.PREPARED:
+				opacityDeathCD+=delta;
+				AdjustStarColors(new Color(1,1,0, opacityDeathTime/opacityDeathCD));
 				if(!caught && deathCD >= deathTime*catchPercentage && GotInput()) {
 					caught = true;
 					int baseScore = 50;
@@ -84,11 +88,13 @@ public class Star : RigidBody2D
 				//FadeOut del objeto hasta la muerte
 				opacityDeathCD+=delta;
 				AdjustStarColors(new Color(0,1,0, opacityDeathTime/opacityDeathCD));
+				deathTime*=2;
 				break;
 			case StarState.DEAD:
 				//FadeOut del objeto hasta la muerte
 				opacityDeathCD+=delta;
 				AdjustStarColors(new Color(1,0,0, opacityDeathTime/opacityDeathCD));
+				deathTime*=2;
 				break;
 		}
 		
