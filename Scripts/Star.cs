@@ -12,10 +12,12 @@ public class Star : RigidBody2D
 	
 	private StarState state;
 	
+	[Export]
+	float deathTime = 2.0f;
 	
 	float catchPercentage;
 	
-	public StarSpawner starManager;
+	public StarSpawner starManager=null;
 	
 	private float deathCD;
 	float deathTime = 1.0f;
@@ -24,6 +26,10 @@ public class Star : RigidBody2D
 	
 	private float opacityDeathTime;
 	private float opacityDeathCD;
+
+	CPUParticles2D trailParticles;
+	CPUParticles2D explosionParticles;
+	Sprite starSprite;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -35,27 +41,32 @@ public class Star : RigidBody2D
 		
 		opacityDeathTime = 0.0f;
 		opacityDeathCD = 0.0f;
+
+		starSprite = GetNode<Sprite>("Sprite");
+		trailParticles = GetNode<CPUParticles2D>("TrailParticles");
+		explosionParticles = GetNode<CPUParticles2D>("ExplotionParticles");
 	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
   	public override void _Process(float delta)
   	{
 	  	deathCD += delta;
-		
+		trailParticles.Direction = (LinearVelocity.Normalized())*-1;
 		switch(state) {
 			case StarState.NOT_PREPARED:
 				if(deathCD >= deathTime*catchPercentage) {
 					state = StarState.PREPARED;
-					GetNode<Sprite>("Sprite").Modulate = new Color(1,1,0);
+					AdjustStarColors(new Color(1,1,0));
 				}
 				else if(GotInput()) {
 					state = StarState.DEAD;
-					GetNode<Sprite>("Sprite").Modulate = new Color(1,0,0);
+					AdjustStarColors(new Color(1,0,0));
 					opacityDeathTime = (deathTime-deathCD)/4;
+					starManager?.DeathOfAStar();
 				}
 				break;
 			case StarState.PREPARED:
-				if(!caught && deathCD >= deathTime*catchPercentage && GotInput()) {
+				if(true || !caught && deathCD >= deathTime*catchPercentage && GotInput()) {
 					caught = true;
 					int baseScore = 50;
 					float restPercentage = 1 - catchPercentage;
@@ -65,24 +76,26 @@ public class Star : RigidBody2D
 					float percentageBonusScore = baseScore * (1-((percentageFromTotal-catchPercentage)/(1-catchPercentage)));
 					GameManager.Instance.AddScore(baseScore + (int)percentageBonusScore);
 					state = StarState.CAUGHT;
-					GetNode<Sprite>("Sprite").Modulate = new Color(0,1,0);
+					AdjustStarColors(new Color(0,1,0));
 					opacityDeathTime = (deathTime-deathCD)/4;
+					starManager?.DeathOfAStar();
+					explosionParticles.Emitting = true;
 				}
 				break;
 			case StarState.CAUGHT:
 				//FadeOut del objeto hasta la muerte
 				opacityDeathCD+=delta;
-				GetNode<Sprite>("Sprite").Modulate = new Color(0,1,0, opacityDeathTime/opacityDeathCD);
+				AdjustStarColors(new Color(0,1,0, opacityDeathTime/opacityDeathCD));
 				break;
 			case StarState.DEAD:
 				//FadeOut del objeto hasta la muerte
 				opacityDeathCD+=delta;
-				GetNode<Sprite>("Sprite").Modulate = new Color(1,0,0, opacityDeathTime/opacityDeathCD);
+				AdjustStarColors(new Color(1,0,0, opacityDeathTime/opacityDeathCD));
 				break;
 		}
 		
 		if(deathCD >= deathTime) {
-			starManager.DeathOfAStar();
+			starManager?.DeathOfAStar();
 			Free();
 		}
   	}
@@ -101,5 +114,11 @@ public class Star : RigidBody2D
 	
 	public void SetDeathTime(float time) {
 		deathTime = time;
+	}
+
+	private void AdjustStarColors(Color newColor){
+		starSprite.Modulate = newColor;
+		trailParticles.Color = newColor;
+		explosionParticles.Color = newColor;
 	}
 }

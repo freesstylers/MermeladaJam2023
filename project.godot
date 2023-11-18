@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="MermeladaJam2023"
-run/main_scene="res://Escenas/SceneManager.tscn"
+run/main_scene="res://Escenas/MainScene.tscn"
 boot_splash/show_image=false
 config/icon="res://icon.png"
 
