@@ -28,7 +28,7 @@ public class GameManager : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GDScript SceneManager = (GDScript)GD.Load("res://Scripts/SceneManager.gd");
+		//GDScript SceneManager = (GDScript)GD.Load("res://Scripts/SceneManager.gd");
 		score = 0;
 		pendingTime = totalTime;
 		
