@@ -8,7 +8,15 @@ public class StarSpawner : Area2D
 	[Export]
 	float spawnTimeMax = 5;
 	[Export]
-	float spawnTimeMin = 3;
+	float spawnTimeMin = 3;	
+	[Export]
+	float finalSpawnTimeMax = 2;
+	[Export]
+	float finalSpawnTimeMin = 1;
+	
+	private float maxTimeReduction;
+	private float minTimeReduction;
+	
 	[Export]
 	float starSpeed = 150.0f;
 	[Export]
@@ -23,6 +31,7 @@ public class StarSpawner : Area2D
 	
 	private float spawnTime;
 	private float spawnCD;
+	private float gameTime;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -35,13 +44,20 @@ public class StarSpawner : Area2D
 		
 		bool aux = (bool)GetTree().Root.GetNode("SceneManager").Get("endless");
 		GameManager.Instance.endlessMode = aux;
+		gameTime = GameManager.Instance.GetTotalTime();
+		
+		maxTimeReduction = (finalSpawnTimeMax - spawnTimeMax)/gameTime;
+		minTimeReduction = (finalSpawnTimeMin - spawnTimeMin)/gameTime;
 	}
 
   	// Called every frame. 'delta' is the elapsed time since the previous frame.
   	public override void _Process(float delta)
   	{
 	  	spawnCD+=delta;
+		spawnTimeMax += (maxTimeReduction*delta)/gameTime;
+		spawnTimeMin += (minTimeReduction*delta)/gameTime;
 		if(spawnCD>=spawnTime) {
+			spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;
 			spawnCD = 0.0f;
 			SpawnStar();
 		}
@@ -61,19 +77,23 @@ public class StarSpawner : Area2D
 		Vector2 direction = new Vector2(0,0);
 		//Estrella fugaz
 		if(GD.Randi()%2 == 0) {
+			bool fromRight = (GD.Randi()%2 == 0);
 			star.SetDeathTime(starLife);
 			int randomX = (int)(GD.Randi() % 50);
-			int randomY = (int)(100 + GD.Randi() % 50);
-			star.Position = new Vector2(randomX, randomY);
+			if(fromRight) randomX = (int)(GD.Randi() % 50)+(int)(Position.x);
+			int randomY = 0;
+			star.GlobalPosition = new Vector2(randomX, randomY);
 			
-			direction = new Vector2(-(GD.Randf()+0.5f), GD.Randf()+0.2f);
+			int xDir = -1;
+			if(fromRight) xDir = 1;
+			direction = new Vector2((GD.Randf()+0.5f)*(-1*xDir), GD.Randf()+0.2f);
 		}
 		//Cobete
 		else {
 			star.SetDeathTime(rocketLife);
 			int randomX = (int)(GD.Randi() % GetViewport().Size.x);
 			int randomY = (int)(GetViewport().Size.y);
-			star.Position = new Vector2(randomX, randomY);
+			star.GlobalPosition = new Vector2(randomX, randomY);
 			
 			direction = new Vector2(0, -1);
 		}
@@ -97,7 +117,6 @@ public class StarSpawner : Area2D
 		
 		for(int i = 0; i < starPos; i++) {
 			if(starList.ElementAt(i).GetState() == Star.StarState.PREPARED) {
-				GD.Print("Habia otra antes");
 				return false;
 			}
 		}

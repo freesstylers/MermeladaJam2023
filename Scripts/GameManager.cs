@@ -19,7 +19,10 @@ public class GameManager : Node
 	private int score;
 	public bool endlessMode = false;
 	public bool finished = false;
+	
+	[Export]
 	private float totalTime = 10;
+	
 	private float pendingTime;
 	Node sceneManager_;
 	// Called when the node enters the scene tree for the first time.
@@ -53,5 +56,9 @@ public class GameManager : Node
 	
 	public int GetScore() {
 		return score;
+	}
+	
+	public float GetTotalTime() {
+		return totalTime;
 	}
 }
