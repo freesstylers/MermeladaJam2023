@@ -17,13 +17,12 @@ public class Star : RigidBody2D
 	
 	float catchPercentage;
 	
-	public InputManager inputManager;
+	public StarSpawner starManager;
 	
 	private float deathCD;
 	
 	private bool caught;
 	
-	private float opacity;
 	private float opacityDeathTime;
 	private float opacityDeathCD;
 	
@@ -35,7 +34,6 @@ public class Star : RigidBody2D
 		catchPercentage = 0.5f + GD.Randf()*0.2f;
 		state = StarState.NOT_PREPARED;
 		
-		opacity = 1.0f;
 		opacityDeathTime = 0.0f;
 		opacityDeathCD = 0.0f;
 	}
@@ -51,14 +49,15 @@ public class Star : RigidBody2D
 					state = StarState.PREPARED;
 					GetNode<Sprite>("Sprite").Modulate = new Color(1,1,0);
 				}
-				else if(Input.IsActionPressed("Catch")) {
+				else if(GotInput()) {
 					state = StarState.DEAD;
-					GetNode<Sprite>("Sprite").Modulate = new Color(1,0,0,1);
+					GetNode<Sprite>("Sprite").Modulate = new Color(1,0,0);
 					opacityDeathTime = (deathTime-deathCD)/4;
+					starManager.DeathOfAStar();
 				}
 				break;
 			case StarState.PREPARED:
-				if(!caught && deathCD >= deathTime*catchPercentage && Input.IsActionPressed("Catch")) {
+				if(!caught && deathCD >= deathTime*catchPercentage && GotInput()) {
 					caught = true;
 					int baseScore = 50;
 					float restPercentage = 1 - catchPercentage;
@@ -70,6 +69,7 @@ public class Star : RigidBody2D
 					state = StarState.CAUGHT;
 					GetNode<Sprite>("Sprite").Modulate = new Color(0,1,0);
 					opacityDeathTime = (deathTime-deathCD)/4;
+					starManager.DeathOfAStar();
 				}
 				break;
 			case StarState.CAUGHT:
@@ -84,11 +84,18 @@ public class Star : RigidBody2D
 				break;
 		}
 		
-		if(deathCD >= deathTime)
+		if(deathCD >= deathTime) {
+			starManager.DeathOfAStar();
 			Free();
+		}
   	}
 	
-	public void SetInputManager(InputManager iM) {
-		inputManager = iM;
+	private bool GotInput() {
+		if(!starManager.IsStarFront(this)) return false;
+		else return Input.IsActionPressed("Catch");
+	}
+	
+	public void SetStarSpawner(StarSpawner sM) {
+		starManager = sM;
 	}
 }

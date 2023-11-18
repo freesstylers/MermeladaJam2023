@@ -1,16 +1,17 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class StarSpawner : Area2D
 {
 	[Export]
-	int spawnTimeMax = 5;
+	float spawnTimeMax = 5;
 	[Export]
-	int spawnTimeMin = 3;
+	float spawnTimeMin = 3;
 	[Export]
 	float starSpeed = 150.0f;
 	
-	private InputManager inputManager;
+	private Queue<Star> starList;
 	
 	[Export]
 	public PackedScene starScene { get; set; }
@@ -23,8 +24,7 @@ public class StarSpawner : Area2D
 	{
 		spawnCD = 0.0f;
 		spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;
-		
-		inputManager = GetTree().Root.GetNode("Node2D").GetNode("InputManager") as InputManager;
+		starList = new Queue<Star>();
 	}
 
   	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,7 +32,6 @@ public class StarSpawner : Area2D
   	{
 	  	spawnCD+=delta;
 		if(spawnCD>=spawnTime) {
-			GD.Print("Spawn");
 			spawnCD = 0.0f;
 			SpawnStar();
 		}
@@ -42,17 +41,27 @@ public class StarSpawner : Area2D
 		spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;
 			
 		Star star = starScene.Instance<Star>();
-		star.SetInputManager(inputManager);
+		star.SetStarSpawner(this);
+		starList.Enqueue(star);
 		AddChild(star);
 		int randomX = (int)(GD.Randi() % 50);
-		GD.Print(randomX);
 		int randomY = (int)(GD.Randi() % 50);
-		GD.Print(randomY);
 		star.Position = new Vector2(randomX, randomY);
 			
 		Vector2 direction = new Vector2(-(GD.Randf()+0.5f), GD.Randf()+0.2f);
 		direction = direction.Normalized();
 			
 		star.LinearVelocity = direction * starSpeed;
+	}
+	
+	public void DeathOfAStar() {
+		if(starList.Count != 0) {
+			starList.Dequeue();
+			GD.Print("muelta");
+		}
+	}
+	
+	public bool IsStarFront(Star star) {
+		return star == starList.Peek();
 	}
 }

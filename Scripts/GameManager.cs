@@ -31,6 +31,5 @@ public class GameManager : Node
 	
 	public void AddScore(int num) {
 		score+=num;
-		GD.Print(num);
 	}
 }
