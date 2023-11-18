@@ -12,9 +12,6 @@ public class Star : RigidBody2D
 	
 	private StarState state;
 	
-	[Export]
-	float deathTime = 2.0f;
-	
 	float catchPercentage;
 	
 	public StarSpawner starManager=null;
@@ -29,6 +26,7 @@ public class Star : RigidBody2D
 
 	CPUParticles2D trailParticles;
 	CPUParticles2D explosionParticles;
+	CPUParticles2D explosionReadyParticles;
 	Sprite starSprite;
 	
 	// Called when the node enters the scene tree for the first time.
@@ -45,6 +43,7 @@ public class Star : RigidBody2D
 		starSprite = GetNode<Sprite>("Sprite");
 		trailParticles = GetNode<CPUParticles2D>("TrailParticles");
 		explosionParticles = GetNode<CPUParticles2D>("ExplotionParticles");
+		explosionReadyParticles = GetNode<CPUParticles2D>("ExplotionReadyParticles");
 	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,16 +56,17 @@ public class Star : RigidBody2D
 				if(deathCD >= deathTime*catchPercentage) {
 					state = StarState.PREPARED;
 					AdjustStarColors(new Color(1,1,0));
+					explosionReadyParticles.Emitting = true;
 				}
 				else if(GotInput()) {
 					state = StarState.DEAD;
 					AdjustStarColors(new Color(1,0,0));
 					opacityDeathTime = (deathTime-deathCD)/4;
-					starManager?.DeathOfAStar();
+					starManager.DeathOfAStar();
 				}
 				break;
 			case StarState.PREPARED:
-				if(true || !caught && deathCD >= deathTime*catchPercentage && GotInput()) {
+				if(!caught && deathCD >= deathTime*catchPercentage && GotInput()) {
 					caught = true;
 					int baseScore = 50;
 					float restPercentage = 1 - catchPercentage;
@@ -78,7 +78,7 @@ public class Star : RigidBody2D
 					state = StarState.CAUGHT;
 					AdjustStarColors(new Color(0,1,0));
 					opacityDeathTime = (deathTime-deathCD)/4;
-					starManager?.DeathOfAStar();
+					starManager.DeathOfAStar();
 					explosionParticles.Emitting = true;
 				}
 				break;
@@ -95,7 +95,7 @@ public class Star : RigidBody2D
 		}
 		
 		if(deathCD >= deathTime) {
-			starManager?.DeathOfAStar();
+			starManager.DeathOfAStar();
 			Free();
 		}
   	}
