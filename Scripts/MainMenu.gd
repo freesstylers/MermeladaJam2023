@@ -1,6 +1,7 @@
 extends Node
 
 signal normalMode
+signal endlessMode
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,7 @@ func NormalMode():
 	pass # Replace with function body.
 
 func EndlessMode():
+	emit_signal("endlessMode")
 	pass # Replace with function body.
 
 func Credits():

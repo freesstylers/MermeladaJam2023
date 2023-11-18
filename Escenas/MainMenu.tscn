@@ -218,8 +218,6 @@ text = "BACK"
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/EndlessMode" to="." method="EndlessMode"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/Credits" to="." method="Credits"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer3/HBoxContainer/FreeStylers_Button" to="." method="FreeStylers"]
-[connection signal="mouse_entered" from="MainMenuContainer/VBoxContainer/MarginContainer3/HBoxContainer/FreeStylers_Button" to="." method="_on_FreeStylers_Button_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenuContainer/VBoxContainer/MarginContainer3/HBoxContainer/FreeStylers_Button" to="." method="_on_FreeStylers_Button_mouse_exited"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer3/HBoxContainer/Jam" to="." method="Jam"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer3/HBoxContainer/Twitter" to="." method="Twitter"]
 [connection signal="button_down" from="CreditsContainer/VBoxContainer/Back" to="." method="CreditsBack"]

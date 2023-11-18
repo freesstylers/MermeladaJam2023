@@ -16,9 +16,7 @@ public class Star : RigidBody2D
 	
 	public StarSpawner starManager=null;
 	
-	private float deathCD;
-	float deathTime = 1.0f;
-	
+	private float deathCD;	
 	private bool caught;
 	
 	private float opacityDeathTime;

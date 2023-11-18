@@ -32,6 +32,9 @@ public class StarSpawner : Area2D
 		spawnCD = 0.0f;
 		spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;
 		starList = new List<Star>();
+		
+		bool aux = (bool)GetTree().Root.GetNode("SceneManager").Get("endless");
+		GameManager.Instance.endlessMode = aux;
 	}
 
   	// Called every frame. 'delta' is the elapsed time since the previous frame.
