@@ -18,6 +18,5 @@ script = ExtResource( 3 )
 script = ExtResource( 4 )
 totalTime = 120.0
 
-[connection signal="endlessMode" from="CurrentScene/Control" to="." method="_on_Control_endlessMode"]
 [connection signal="normalMode" from="CurrentScene/Control" to="." method="_on_Control_normalMode"]
 [connection signal="transitioned" from="CanvasLayer" to="." method="_on_CanvasLayer_transitioned"]
