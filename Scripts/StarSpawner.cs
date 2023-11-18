@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class StarSpawner : Area2D
 {
@@ -11,7 +12,7 @@ public class StarSpawner : Area2D
 	[Export]
 	float starSpeed = 150.0f;
 	
-	private Queue<Star> starList;
+	private List<Star> starList;
 	
 	[Export]
 	public PackedScene starScene { get; set; }
@@ -24,7 +25,7 @@ public class StarSpawner : Area2D
 	{
 		spawnCD = 0.0f;
 		spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;
-		starList = new Queue<Star>();
+		starList = new List<Star>();
 	}
 
   	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,7 +43,7 @@ public class StarSpawner : Area2D
 			
 		Star star = starScene.Instance<Star>();
 		star.SetStarSpawner(this);
-		starList.Enqueue(star);
+		starList.Insert(starList.Count, star);
 		AddChild(star);
 		int randomX = (int)(GD.Randi() % 50);
 		int randomY = (int)(GD.Randi() % 50);
@@ -55,13 +56,26 @@ public class StarSpawner : Area2D
 	}
 	
 	public void DeathOfAStar() {
-		if(starList.Count != 0) {
-			starList.Dequeue();
-			GD.Print("muelta");
+		if(starList.Count > 0) {
+			starList.RemoveAt(0);
 		}
 	}
 	
 	public bool IsStarFront(Star star) {
-		return star == starList.Peek();
+		return starList.IndexOf(star) == 0;
+	}
+	
+	public bool ShouldGetInput(Star star) {
+		int starPos = starList.IndexOf(star);
+		GD.Print(starPos);
+		
+		for(int i = 0; i < starPos; i++) {
+			if(starList.ElementAt(i).GetState() == Star.StarState.PREPARED) {
+				GD.Print("Habia otra antes");
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }

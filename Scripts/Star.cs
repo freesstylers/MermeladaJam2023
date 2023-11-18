@@ -3,7 +3,7 @@ using System;
 
 public class Star : RigidBody2D
 {
-	enum StarState {
+	public enum StarState {
 		NOT_PREPARED,
 		PREPARED,
 		CAUGHT,
@@ -53,7 +53,6 @@ public class Star : RigidBody2D
 					state = StarState.DEAD;
 					GetNode<Sprite>("Sprite").Modulate = new Color(1,0,0);
 					opacityDeathTime = (deathTime-deathCD)/4;
-					starManager.DeathOfAStar();
 				}
 				break;
 			case StarState.PREPARED:
@@ -69,7 +68,6 @@ public class Star : RigidBody2D
 					state = StarState.CAUGHT;
 					GetNode<Sprite>("Sprite").Modulate = new Color(0,1,0);
 					opacityDeathTime = (deathTime-deathCD)/4;
-					starManager.DeathOfAStar();
 				}
 				break;
 			case StarState.CAUGHT:
@@ -91,11 +89,14 @@ public class Star : RigidBody2D
   	}
 	
 	private bool GotInput() {
-		if(!starManager.IsStarFront(this)) return false;
-		else return Input.IsActionPressed("Catch");
+		return Input.IsActionPressed("Catch") && starManager.ShouldGetInput(this);
 	}
 	
 	public void SetStarSpawner(StarSpawner sM) {
 		starManager = sM;
+	}
+	
+	public StarState GetState() {
+		return state;
 	}
 }
