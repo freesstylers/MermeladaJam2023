@@ -351,7 +351,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 0 ) ]
 }
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 8 )

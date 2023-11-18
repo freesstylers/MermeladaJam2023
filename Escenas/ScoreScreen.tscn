@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/ScoreScreen.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Font/DynamicFont.tres" type="DynamicFont" id=6]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.917647, 0.537255, 0.603922, 1 )
+
+[node name="MainMenuContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+custom_constants/margin_right = 100
+custom_constants/margin_top = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuContainer"]
+margin_top = 100.0
+margin_right = 500.0
+margin_bottom = 800.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuContainer/VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_left = 100
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuContainer/VBoxContainer/MarginContainer"]
+margin_left = 100.0
+margin_right = 500.0
+margin_bottom = 188.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MainMenuContainer/VBoxContainer"]
+margin_top = 203.0
+margin_right = 500.0
+margin_bottom = 239.0
+custom_fonts/font = ExtResource( 6 )
+text = "Thanks for playing!"
+align = 1
+
+[node name="Label2" type="Label" parent="MainMenuContainer/VBoxContainer"]
+margin_top = 254.0
+margin_right = 500.0
+margin_bottom = 290.0
+custom_fonts/font = ExtResource( 6 )
+text = "Final score"
+align = 1
+
+[node name="Label3" type="Label" parent="MainMenuContainer/VBoxContainer"]
+margin_top = 305.0
+margin_right = 500.0
+margin_bottom = 497.0
+custom_fonts/font = ExtResource( 6 )
+text = "
+0
+
+
+"
+align = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenuContainer/VBoxContainer"]
+margin_top = 512.0
+margin_right = 500.0
+margin_bottom = 700.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_left = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuContainer/VBoxContainer/MarginContainer2"]
+margin_left = 100.0
+margin_right = 500.0
+margin_bottom = 188.0
+custom_constants/separation = 25
+
+[node name="BackToMainMenu" type="Button" parent="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 6 )
+text = "go to main menu"
+
+[connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/BackToMainMenu" to="." method="_on_BackToMainMenu_button_down"]
