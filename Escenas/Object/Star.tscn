@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Star/star.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Star.cs" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( -52.9262, 26.0065, 52.9262, -26.0065, -84, -1, -38.1825, -21.8645, 38.1825, 21.8645, 100, -1 )
+}
 
 [sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
@@ -12,19 +17,29 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2( 296, 400 )
 collision_layer = 0
 gravity_scale = 0.0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="StarPath" type="Path2D" parent="."]
+curve = SubResource( 4 )
+
+[node name="StarPathFollower" type="PathFollow2D" parent="StarPath"]
+position = Vector2( -84, -1 )
+rotation = -0.439112
+
+[node name="StarSprite" type="Sprite" parent="StarPath/StarPathFollower"]
+rotation = 0.693562
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
 
-[node name="TrailParticles" type="CPUParticles2D" parent="."]
-scale = Vector2( 0.001, 0.001 )
+[node name="TrailParticles" type="CPUParticles2D" parent="StarPath/StarPathFollower/StarSprite"]
+scale = Vector2( 0.005, 0.005 )
 amount = 30
 lifetime = 0.35
 fixed_fps = 60
@@ -39,7 +54,8 @@ scale_amount = 0.05
 color_ramp = SubResource( 3 )
 anim_speed_random = 1.0
 
-[node name="ExplotionParticles" type="CPUParticles2D" parent="."]
+[node name="ExplotionParticles" type="CPUParticles2D" parent="StarPath/StarPathFollower/StarSprite"]
+scale = Vector2( 5, 5 )
 emitting = false
 amount = 15
 one_shot = true
@@ -59,7 +75,10 @@ scale_amount = 0.1
 color_ramp = SubResource( 2 )
 anim_speed_random = 1.0
 
-[node name="ExplotionReadyParticles" type="CPUParticles2D" parent="."]
+[node name="ExplotionReadyParticles" type="CPUParticles2D" parent="StarPath/StarPathFollower/StarSprite"]
+position = Vector2( 407.735, -100.88 )
+rotation = -0.25445
+scale = Vector2( 5, 5 )
 emitting = false
 amount = 15
 one_shot = true
