@@ -459,7 +459,6 @@ layer = 2
 position = Vector2( 500, 100 )
 script = ExtResource( 2 )
 starScene = ExtResource( 3 )
-spawnTimeMin = 2.0
 starSpeed = 500.0
 starLife = 2.0
 rocketLife = 2.0

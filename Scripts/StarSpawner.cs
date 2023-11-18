@@ -32,6 +32,8 @@ public class StarSpawner : Area2D
 	private float spawnTime;
 	private float spawnCD;
 	private float gameTime;
+
+	private bool captureStarJustPressed = false;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -48,11 +50,15 @@ public class StarSpawner : Area2D
 		
 		maxTimeReduction = (finalSpawnTimeMax - spawnTimeMax)/gameTime;
 		minTimeReduction = (finalSpawnTimeMin - spawnTimeMin)/gameTime;
+
+		captureStarJustPressed = false;
 	}
 
   	// Called every frame. 'delta' is the elapsed time since the previous frame.
   	public override void _Process(float delta)
   	{
+		captureStarJustPressed = Input.IsActionJustPressed("Catch");
+
 	  	spawnCD+=delta;
 		spawnTimeMax += (maxTimeReduction*delta)/gameTime;
 		spawnTimeMin += (minTimeReduction*delta)/gameTime;
@@ -116,13 +122,17 @@ public class StarSpawner : Area2D
 	
 	public bool ShouldGetInput(Star star) {
 		int starPos = starList.IndexOf(star);
-		
 		for(int i = 0; i < starPos; i++) {
 			if(starList.ElementAt(i).GetState() == Star.StarState.PREPARED) {
 				return false;
 			}
 		}
+		//Solo contamos esto un único frame
+		if(captureStarJustPressed){
+			captureStarJustPressed=false;
+			return true;
+		}
 		
-		return true;
+		return false;
 	}
 }
