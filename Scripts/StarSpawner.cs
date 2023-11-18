@@ -11,6 +11,10 @@ public class StarSpawner : Area2D
 	float spawnTimeMin = 3;
 	[Export]
 	float starSpeed = 150.0f;
+	[Export]
+	float starLife = 1.0f;
+	[Export]
+	float rocketLife = 1.5f;
 	
 	private List<Star> starList;
 	
@@ -23,7 +27,7 @@ public class StarSpawner : Area2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		SetPosition(new Vector2(GetViewport().Size.x*0.8f,0));
+		Position = new Vector2(GetViewport().Size.x*0.8f,0);
 		
 		spawnCD = 0.0f;
 		spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;
@@ -47,14 +51,32 @@ public class StarSpawner : Area2D
 		star.SetStarSpawner(this);
 		starList.Insert(starList.Count, star);
 		AddChild(star);
-		int randomX = (int)(GD.Randi() % 50);
-		int randomY = (int)(GD.Randi() % 50);
-		star.Position = new Vector2(randomX, randomY);
+		GiveRandomPosDir(ref star);
+	}
+	
+	private void GiveRandomPosDir(ref Star star) {
+		Vector2 direction = new Vector2(0,0);
+		//Estrella fugaz
+		if(GD.Randi()%2 == 0) {
+			star.SetDeathTime(starLife);
+			int randomX = (int)(GD.Randi() % 50);
+			int randomY = (int)(100 + GD.Randi() % 50);
+			star.Position = new Vector2(randomX, randomY);
 			
-		Vector2 direction = new Vector2(-(GD.Randf()+0.5f), GD.Randf()+0.2f);
+			direction = new Vector2(-(GD.Randf()+0.5f), GD.Randf()+0.2f);
+		}
+		//Cobete
+		else {
+			star.SetDeathTime(rocketLife);
+			int randomX = (int)(GD.Randi() % GetViewport().Size.x);
+			int randomY = (int)(GetViewport().Size.y);
+			star.Position = new Vector2(randomX, randomY);
+			
+			direction = new Vector2(0, -1);
+		}
 		direction = direction.Normalized();
-			
 		star.LinearVelocity = direction * starSpeed;
+		
 	}
 	
 	public void DeathOfAStar() {

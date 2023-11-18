@@ -362,7 +362,7 @@ script = ExtResource( 8 )
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
 anchor_right = 1.0
 anchor_bottom = 0.125
-color = Color( 0.235294, 0.235294, 0.235294, 1 )
+color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -452,7 +452,7 @@ color = Color( 0.501961, 0.501961, 0.501961, 1 )
 layer = 2
 
 [node name="StarSpawner" type="Area2D" parent="Node2D/CanvasLayer"]
-position = Vector2( 500, 0 )
+position = Vector2( 500, 100 )
 script = ExtResource( 2 )
 starScene = ExtResource( 3 )
 starSpeed = 500.0

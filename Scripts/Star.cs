@@ -12,14 +12,13 @@ public class Star : RigidBody2D
 	
 	private StarState state;
 	
-	[Export]
-	float deathTime = 1.0f;
 	
 	float catchPercentage;
 	
 	public StarSpawner starManager;
 	
 	private float deathCD;
+	float deathTime = 1.0f;
 	
 	private bool caught;
 	
@@ -98,5 +97,9 @@ public class Star : RigidBody2D
 	
 	public StarState GetState() {
 		return state;
+	}
+	
+	public void SetDeathTime(float time) {
+		deathTime = time;
 	}
 }
