@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 
 public class StarSpawner : Area2D
@@ -35,17 +36,29 @@ public class StarSpawner : Area2D
 	private float gameTime;
 
 	private bool captureStarJustPressed = false;
-	
+
+    [Export]
+    public Node TargetNode { get; set; } = null;
+
+[Export]
+	private Sprite cityLights;
+	float lerpFactor = 2.0f;
+	Color lightOffColor = new Color(1,1,1,1);
+	Color lightsFullColor = new Color(10,10,1,1);
+	float starInteractionStep = 2.5f;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		cityLights = GetTree().Root.GetNode<Sprite>("SceneManager/CurrentScene/Control2/CanvasLayer/CityBackgroundLights");
+		bool aux = (bool)GetTree().Root.GetNode("SceneManager").Get("endless");
+
 		Position = new Vector2(GetViewport().Size.x*0.8f,0);
-		
+	
 		spawnCD = 0.0f;
 		spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;
 		starList = new List<Star>();
 		
-		bool aux = (bool)GetTree().Root.GetNode("SceneManager").Get("endless");
 		GameManager.Instance.endlessMode = aux;
 		gameTime = GameManager.Instance.GetTotalTime();
 		
@@ -68,6 +81,11 @@ public class StarSpawner : Area2D
 			spawnCD = 0.0f;
 			SpawnStar();
 		}
+
+		Color lightsColor = cityLights.SelfModulate;
+		lightsColor = lightsColor.LinearInterpolate(lightOffColor, lerpFactor*delta);
+		cityLights.SelfModulate = lightsColor;
+		//GD.Print(lightsColor);
   	}
 	
 	private void SpawnStar() {
@@ -146,5 +164,28 @@ public class StarSpawner : Area2D
 		}
 		
 		return false;
+	}
+
+	public void StarInteractionDone(Star.StarState resultState){
+		Color lColor = cityLights.SelfModulate;
+		switch(resultState){
+			case Star.StarState.PREPARED:
+			lColor = new Color(10,10,1,1);
+			//lColor.r += starInteractionStep;
+			//lColor.g += starInteractionStep;
+			break;
+			case Star.StarState.CAUGHT:
+			lColor = new Color(1,10,1,1);
+			//lColor.g += starInteractionStep;
+			break;
+			case Star.StarState.DEAD:
+			lColor = new Color(10,1,1,1);
+			//lColor.r += starInteractionStep;
+			break;
+			case Star.StarState.NOT_PREPARED:
+			break;
+		}
+		//lColor.a += starInteractionStep;
+		cityLights.SelfModulate = lColor;
 	}
 }
