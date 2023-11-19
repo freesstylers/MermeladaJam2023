@@ -37,8 +37,8 @@ public class StarSpawner : Area2D
 
 	private bool captureStarJustPressed = false;
 
-    [Export]
-    public Node TargetNode { get; set; } = null;
+	[Export]
+	public Node TargetNode { get; set; } = null;
 
 [Export]
 	private Sprite cityLights;

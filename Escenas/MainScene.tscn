@@ -1,6 +1,5 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://Assets/background.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/StarSpawner.cs" type="Script" id=2]
 [ext_resource path="res://Escenas/Object/Star.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/cityBackground.png" type="Texture" id=4]
@@ -21,34 +20,22 @@ glow_enabled = true
 [sub_resource type="Animation" id=3]
 resource_name = "ParpadeoAbajoIn"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Parpado2:visible")
+tracks/0/path = NodePath("CanvasLayer3/Parpado2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Parpado2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.5, 0.7, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.7, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 0.3 ), Vector2( 1, 0.2 ), Vector2( 1, 0.45 ) ]
+"values": [ Vector2( 600, 1319 ), Vector2( 600, 900 ), Vector2( 600, 1050 ), Vector2( 600, 900 ) ]
 }
 
 [sub_resource type="Animation" id=4]
 resource_name = "ParpadeoAbajoOut"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Parpado2:visible")
+tracks/0/path = NodePath("CanvasLayer3/Parpado2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -56,53 +43,29 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Parpado2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 0.45 ), Vector2( 1, 1e-05 ) ]
+"values": [ Vector2( 600, 900 ), Vector2( 600, 1319 ) ]
 }
 
 [sub_resource type="Animation" id=1]
 resource_name = "ParpadeoArribaIn"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Parpado1:visible")
+tracks/0/path = NodePath("CanvasLayer3/Parpado1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Parpado1:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.5, 0.7, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.7, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 0 ), Vector2( 1, 0.3 ), Vector2( 1, 0.2 ), Vector2( 1, 0.45 ) ]
+"values": [ Vector2( 0, -519 ), Vector2( 0, -150 ), Vector2( 0, -300 ), Vector2( 0, -150 ) ]
 }
 
 [sub_resource type="Animation" id=5]
 resource_name = "ParpadeoArribaOut"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Parpado1:visible")
+tracks/0/path = NodePath("CanvasLayer3/Parpado1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -110,26 +73,14 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Parpado1:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 0.45 ), Vector2( 1, 1e-05 ) ]
+"values": [ Vector2( 0, -150 ), Vector2( 0, -519 ) ]
 }
 
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Parpado1:texture")
+tracks/0/path = NodePath("CanvasLayer3/Parpado1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -138,10 +89,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ ExtResource( 1 ) ]
+"values": [ Vector2( 0, -519 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Parpado1:visible")
+tracks/1/path = NodePath("CanvasLayer3/Parpado2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -150,76 +101,28 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/Parpado1:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 0.2 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/Parpado2:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("CanvasLayer/Parpado2:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 0 ) ]
+"values": [ Vector2( 600, 1334 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 resource_name = "ParpadeoAbajoIn"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Parpado2:visible")
+tracks/0/path = NodePath("CanvasLayer3/Parpado2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Parpado2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.5, 0.7, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.7, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 0.3 ), Vector2( 1, 0.2 ), Vector2( 1, 0.45 ) ]
+"values": [ Vector2( 600, 1319 ), Vector2( 600, 900 ), Vector2( 600, 1050 ), Vector2( 600, 900 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=13]
 resource_name = "ParpadeoAbajoOut"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Parpado2:visible")
+tracks/0/path = NodePath("CanvasLayer3/Parpado2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -227,53 +130,29 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Parpado2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 0.45 ), Vector2( 1, 1e-05 ) ]
+"values": [ Vector2( 600, 900 ), Vector2( 600, 1319 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=14]
 resource_name = "ParpadeoArribaIn"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Parpado1:visible")
+tracks/0/path = NodePath("CanvasLayer3/Parpado1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Parpado1:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.5, 0.7, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.7, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 0 ), Vector2( 1, 0.3 ), Vector2( 1, 0.2 ), Vector2( 1, 0.45 ) ]
+"values": [ Vector2( 0, -519 ), Vector2( 0, -150 ), Vector2( 0, -300 ), Vector2( 0, -150 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=15]
 resource_name = "ParpadeoArribaOut"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Parpado1:visible")
+tracks/0/path = NodePath("CanvasLayer3/Parpado1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -281,26 +160,14 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Parpado1:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 0.45 ), Vector2( 1, 1e-05 ) ]
+"values": [ Vector2( 0, -150 ), Vector2( 0, -519 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=16]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Parpado1:texture")
+tracks/0/path = NodePath("CanvasLayer3/Parpado1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -309,10 +176,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ ExtResource( 1 ) ]
+"values": [ Vector2( 0, -519 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Parpado1:visible")
+tracks/1/path = NodePath("CanvasLayer3/Parpado2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -321,43 +188,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/Parpado1:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 0.2 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/Parpado2:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("CanvasLayer/Parpado2:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 0 ) ]
+"values": [ Vector2( 600, 1334 ) ]
 }
 
 [node name="Control2" type="Control"]
@@ -519,11 +350,11 @@ anims/ParpadeoArribaOut = SubResource( 5 )
 anims/RESET = SubResource( 2 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Node2D"]
-anims/ParpadeoAbajoIn = SubResource( 6 )
-anims/ParpadeoAbajoOut = SubResource( 7 )
-anims/ParpadeoArribaIn = SubResource( 8 )
-anims/ParpadeoArribaOut = SubResource( 9 )
-anims/RESET = SubResource( 10 )
+anims/ParpadeoAbajoIn = SubResource( 12 )
+anims/ParpadeoAbajoOut = SubResource( 13 )
+anims/ParpadeoArribaIn = SubResource( 14 )
+anims/ParpadeoArribaOut = SubResource( 15 )
+anims/RESET = SubResource( 16 )
 
 [connection signal="animation_finished" from="Node2D/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="Node2D/AnimationPlayer2" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -41,3 +41,12 @@ func Jam():
 func Twitter():
 	OS.shell_open("https://twitter.com/FreeStylers_Dev")
 	pass # Replace with function body.
+
+
+func _on_Control_normalMode():
+	get_tree().root.get_node("SceneManager")._on_Control_normalMode()
+	pass # Replace with function body.
+
+func _on_Control_endlessMode():
+	get_tree().root.get_node("SceneManager")._on_Control_endlessMode()
+	pass # Replace with function body.
