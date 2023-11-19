@@ -17,6 +17,7 @@ script = ExtResource( 3 )
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource( 4 )
+totalTime = 120.0
 
 [node name="SoundManager" type="Node2D" parent="."]
 script = ExtResource( 5 )

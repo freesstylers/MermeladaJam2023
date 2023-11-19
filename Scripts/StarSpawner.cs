@@ -124,7 +124,7 @@ public class StarSpawner : Area2D
 		//Cobete
 		else {
 			star.SetDeathTime(rocketLife);
-			randomX = (int)(GD.Randi() % GetViewport().Size.x);
+			randomX = (int)(GetViewport().Size.x/2);
 			randomY = (int)(GetViewport().Size.y);
 			star.GlobalPosition = new Vector2(0, 0);
 			
