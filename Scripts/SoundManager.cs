@@ -47,4 +47,8 @@ public class SoundManager : Node
 		soundInstances.Remove(soundPlayer);
 		soundPlayer.QueueFree();
 	}
+	
+	public void on_play_sound() {
+		SpawnSound("Button");
+	}
 }
