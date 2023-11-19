@@ -15,8 +15,7 @@ public class StarSpawner : Area2D
 	[Export]
 	float finalSpawnTimeMin = 1;
 	
-	[Export]
-	public string spawnSound;
+	private string spawnSound = "StarFall";
 	
 	private float maxTimeReduction;
 	private float minTimeReduction;
@@ -37,11 +36,12 @@ public class StarSpawner : Area2D
 
 	private bool captureStarJustPressed = false;
 
-    [Export]
-    public Node TargetNode { get; set; } = null;
+	[Export]
+	public Node TargetNode { get; set; } = null;
 
-[Export]
+	[Export]
 	private Sprite cityLights;
+	
 	float lerpFactor = 2.0f;
 	Color lightOffColor = new Color(1,1,1,1);
 	Color lightsFullColor = new Color(10,10,1,1);
@@ -119,6 +119,7 @@ public class StarSpawner : Area2D
 			int xDir = -1;
 			if(fromRight) xDir = 1;
 			direction = new Vector2((GD.Randf()+0.5f)*(-1*xDir), GD.Randf()+0.2f);
+			spawnSound = "StarFall";
 		}
 		//Cobete
 		else {
@@ -133,6 +134,7 @@ public class StarSpawner : Area2D
 			control2Distance = GD.Randf()*0.25f;
 			curve1Strength = GD.Randf()*0.5f;
 			curve2Strength = GD.Randf()*0.5f;
+			spawnSound = "Firework";
 		}
 		
 		direction = direction.Normalized();		
