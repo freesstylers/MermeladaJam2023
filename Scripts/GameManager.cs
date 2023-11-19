@@ -64,6 +64,10 @@ public class GameManager : Node
 		return score;
 	}
 	
+	public void SetScore(int score_) {
+		score = score_;
+	}
+	
 	public float GetTotalTime() {
 		return totalTime;
 	}

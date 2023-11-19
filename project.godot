@@ -20,8 +20,11 @@ config/icon="res://icon.png"
 
 window/size/width=600
 window/size/height=800
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/size/resizable=false
+window/size/test_width=600
+window/size/test_height=800
+window/dpi/allow_hidpi=true
+window/handheld/orientation="portrait"
 
 [gui]
 
@@ -32,6 +35,7 @@ common/drop_mouse_on_gui_input_disabled=true
 Catch={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 Escape={

@@ -36,23 +36,25 @@ alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenuContainer/VBoxContainer"]
 margin_right = 501.0
-margin_bottom = 200.0
+margin_bottom = 174.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/margin_top = -80
 custom_constants/margin_left = 100
 
 [node name="TextureRect" type="TextureRect" parent="MainMenuContainer/VBoxContainer/MarginContainer"]
 margin_left = 100.0
+margin_top = -80.0
 margin_right = 501.0
-margin_bottom = 200.0
+margin_bottom = 174.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
 [node name="MarginContainer2" type="MarginContainer" parent="MainMenuContainer/VBoxContainer"]
-margin_top = 215.0
+margin_top = 189.0
 margin_right = 501.0
-margin_bottom = 415.0
+margin_bottom = 510.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_left = 100
@@ -60,12 +62,12 @@ custom_constants/margin_left = 100
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuContainer/VBoxContainer/MarginContainer2"]
 margin_left = 100.0
 margin_right = 501.0
-margin_bottom = 200.0
-custom_constants/separation = 25
+margin_bottom = 321.0
+custom_constants/separation = 15
 
 [node name="NormalMode" type="Button" parent="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 margin_right = 401.0
-margin_bottom = 50.0
+margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 6 )
@@ -73,9 +75,9 @@ text = "Normal Mode"
 script = ExtResource( 7 )
 
 [node name="EndlessMode" type="Button" parent="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
-margin_top = 75.0
+margin_top = 57.0
 margin_right = 401.0
-margin_bottom = 125.0
+margin_bottom = 99.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 6 )
@@ -83,30 +85,58 @@ text = "Endless Mode"
 script = ExtResource( 7 )
 
 [node name="Credits" type="Button" parent="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
-margin_top = 150.0
+margin_top = 114.0
 margin_right = 401.0
-margin_bottom = 200.0
+margin_bottom = 156.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 6 )
 text = "Credits"
 script = ExtResource( 7 )
 
+[node name="HowToPlay" type="Button" parent="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+margin_top = 171.0
+margin_right = 401.0
+margin_bottom = 213.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 6 )
+text = "How To play"
+script = ExtResource( 7 )
+
+[node name="ChangeMusic" type="Button" parent="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+margin_top = 228.0
+margin_right = 401.0
+margin_bottom = 270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 6 )
+text = "CHANGE SFX STYLE"
+script = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+margin_top = 285.0
+margin_right = 401.0
+margin_bottom = 321.0
+custom_fonts/font = ExtResource( 6 )
+text = "SFX - A CAPELLA"
+align = 1
+
 [node name="MarginContainer3" type="MarginContainer" parent="MainMenuContainer/VBoxContainer"]
-margin_top = 430.0
+margin_top = 525.0
 margin_right = 501.0
 margin_bottom = 700.0
 size_flags_horizontal = 5
 size_flags_vertical = 3
-custom_constants/margin_top = 100
+custom_constants/margin_top = 20
 custom_constants/margin_left = 100
-custom_constants/margin_bottom = 100
+custom_constants/margin_bottom = 50
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenuContainer/VBoxContainer/MarginContainer3"]
 margin_left = 100.0
-margin_top = 100.0
+margin_top = 20.0
 margin_right = 501.0
-margin_bottom = 170.0
+margin_bottom = 125.0
 size_flags_horizontal = 3
 custom_constants/separation = 25
 
@@ -148,18 +178,18 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -255.5
-margin_top = -296.5
+margin_top = -350.0
 margin_right = 264.5
-margin_bottom = 296.5
+margin_bottom = 362.0
 
 [node name="ColorRect" type="ColorRect" parent="CreditsContainer"]
 margin_right = 520.0
-margin_bottom = 593.0
+margin_bottom = 712.0
 color = Color( 0.509804, 0.509804, 0.509804, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CreditsContainer"]
 margin_right = 520.0
-margin_bottom = 593.0
+margin_bottom = 712.0
 
 [node name="Label" type="Label" parent="CreditsContainer/VBoxContainer"]
 margin_right = 520.0
@@ -206,18 +236,97 @@ valign = 1
 [node name="Label4" type="Label" parent="CreditsContainer/VBoxContainer"]
 margin_top = 433.0
 margin_right = 520.0
-margin_bottom = 547.0
+margin_bottom = 508.0
 custom_fonts/font = ExtResource( 6 )
 text = "Francisco jose pinilla
+"
+align = 1
+valign = 1
 
+[node name="Label6" type="Label" parent="CreditsContainer/VBoxContainer"]
+margin_top = 512.0
+margin_right = 520.0
+margin_bottom = 587.0
+custom_fonts/font = ExtResource( 6 )
+text = "MUSIC
+"
+align = 1
+valign = 1
+
+[node name="Label7" type="Label" parent="CreditsContainer/VBoxContainer"]
+margin_top = 591.0
+margin_right = 520.0
+margin_bottom = 666.0
+custom_fonts/font = ExtResource( 6 )
+text = "Ralph \"Rak\" Vickers
 "
 align = 1
 valign = 1
 
 [node name="Back" type="Button" parent="CreditsContainer/VBoxContainer"]
-margin_top = 551.0
+margin_top = 670.0
 margin_right = 520.0
-margin_bottom = 593.0
+margin_bottom = 712.0
+custom_fonts/font = ExtResource( 6 )
+text = "BACK"
+script = ExtResource( 7 )
+
+[node name="HowToPlayContainer" type="MarginContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.5
+margin_top = -350.0
+margin_right = 264.5
+margin_bottom = 362.0
+
+[node name="ColorRect" type="ColorRect" parent="HowToPlayContainer"]
+margin_right = 520.0
+margin_bottom = 712.0
+color = Color( 0.509804, 0.509804, 0.509804, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HowToPlayContainer"]
+margin_right = 520.0
+margin_bottom = 712.0
+
+[node name="Label" type="Label" parent="HowToPlayContainer/VBoxContainer"]
+margin_right = 520.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 6 )
+text = "HOW TO PLAY
+---------------------------------"
+align = 1
+valign = 1
+
+[node name="Label5" type="Label" parent="HowToPlayContainer/VBoxContainer"]
+margin_top = 79.0
+margin_right = 520.0
+margin_bottom = 661.0
+custom_fonts/font = ExtResource( 6 )
+text = "STARS WILL APPEAR ON
+SCREEN AND YOU WILL
+HAVE TO POP THEM WHEN
+THEY TURN YELLOW
+
+YOU GET MORE POINTS IF
+YOU POP THEM CLOSER
+TO THEIR EXPLOSION
+
+PRESS SPACE or CLICK
+or touch screen to 
+catch
+
+ENJOY THE EXPERIENCE!
+"
+align = 1
+valign = 1
+
+[node name="Back" type="Button" parent="HowToPlayContainer/VBoxContainer"]
+margin_top = 665.0
+margin_right = 520.0
+margin_bottom = 707.0
 custom_fonts/font = ExtResource( 6 )
 text = "BACK"
 script = ExtResource( 7 )
@@ -227,11 +336,17 @@ script = ExtResource( 7 )
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/NormalMode" to="." method="NormalMode"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/NormalMode" to="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/NormalMode" method="_on_NormalMode_button_down"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/EndlessMode" to="." method="EndlessMode"]
-[connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/EndlessMode" to="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/EndlessMode" method="_on_NormalMode_button_down"]
+[connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/EndlessMode" to="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/EndlessMode" method="_on_EndlessMode_button_down"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/Credits" to="." method="Credits"]
-[connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/Credits" to="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/Credits" method="_on_NormalMode_button_down"]
+[connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/Credits" to="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/Credits" method="_on_Credits_button_down"]
+[connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/HowToPlay" to="." method="_on_HowToPlay_button_down"]
+[connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/HowToPlay" to="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/HowToPlay" method="_on_HowToPlay_button_down"]
+[connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/ChangeMusic" to="." method="_on_ChangeMusic_button_down"]
+[connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/ChangeMusic" to="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/ChangeMusic" method="_on_ChangeMusic_button_down"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer3/HBoxContainer/FreeStylers_Button" to="." method="FreeStylers"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer3/HBoxContainer/Jam" to="." method="Jam"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer3/HBoxContainer/Twitter" to="." method="Twitter"]
 [connection signal="button_down" from="CreditsContainer/VBoxContainer/Back" to="." method="CreditsBack"]
 [connection signal="button_down" from="CreditsContainer/VBoxContainer/Back" to="CreditsContainer/VBoxContainer/Back" method="_on_NormalMode_button_down"]
+[connection signal="button_down" from="HowToPlayContainer/VBoxContainer/Back" to="." method="_on_HowToPlayBack_button_down"]
+[connection signal="button_down" from="HowToPlayContainer/VBoxContainer/Back" to="HowToPlayContainer/VBoxContainer/Back" method="_on_Back_button_down"]

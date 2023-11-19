@@ -92,12 +92,12 @@ public class StarSpawner : Area2D
 		//GD.Print(lightsColor);
   	}
 
-	    // Called when the node is about to be freed. It's similar to Unity's OnDestroy.
-    public override void _ExitTree()
-    {
-        backgroundMusic.QueueFree();
-        base._ExitTree();
-    }
+		// Called when the node is about to be freed. It's similar to Unity's OnDestroy.
+	public override void _ExitTree()
+	{
+		backgroundMusic.QueueFree();
+		base._ExitTree();
+	}
 	
 	private void SpawnStar() {
 		spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;

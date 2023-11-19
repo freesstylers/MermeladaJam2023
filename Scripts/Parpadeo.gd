@@ -43,6 +43,7 @@ func _ready():
 	timer.set_wait_time(t)
 	timer.start()
 	timer.connect("timeout", self, "_on_timer_timeout")
+	
 	pass # Replace with function body.
 
 func _on_timer_timeout():

@@ -10,3 +10,23 @@ func _ready():
 func _on_NormalMode_button_down():
 	emit_signal("play_sound")
 	pass # Replace with function body.
+
+func _on_EndlessMode_button_down():
+	_on_NormalMode_button_down()
+	pass # Replace with function body.
+
+func _on_Credits_button_down():
+	_on_NormalMode_button_down()
+	pass # Replace with function body.
+
+func _on_HowToPlay_button_down():
+	_on_NormalMode_button_down()
+	pass # Replace with function body.
+
+func _on_ChangeMusic_button_down():
+	_on_NormalMode_button_down()
+	pass # Replace with function body.
+
+func _on_Back_button_down():
+	_on_NormalMode_button_down()
+	pass # Replace with function body.

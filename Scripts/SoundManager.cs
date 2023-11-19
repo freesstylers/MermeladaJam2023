@@ -20,11 +20,11 @@ public class SoundManager : Node
 			QueueFree();
 	}
 	
-	public override void _Process(float delta) {
-		if(Input.IsActionJustPressed("ChangeSound")) {
-			isChiptune = !isChiptune;
-		}
-	}
+	//public override void _Process(float delta) {
+		//if(Input.IsActionJustPressed("ChangeSound")) {
+		//	isChiptune = !isChiptune;
+		//}
+	//}
 
 	// Spawn a sound
 	public AudioStreamPlayer SpawnSound(string soundName, float volumeDb = 10.0f)
@@ -60,5 +60,12 @@ public class SoundManager : Node
 	
 	public void on_play_sound() {
 		SpawnSound("Button");
+	}
+	
+	public bool changeMusic()
+	{
+		isChiptune = !isChiptune;
+		
+		return isChiptune;
 	}
 }

@@ -4,6 +4,7 @@ const GameplayScene = preload("res://Escenas/MainScene.tscn")
 const ScoreScreenScene = preload("res://Escenas/ScoreScreen.tscn")
 const MainMenuScene = preload("res://Escenas/MainMenu.tscn")
 var endless = false
+signal size_changed
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
