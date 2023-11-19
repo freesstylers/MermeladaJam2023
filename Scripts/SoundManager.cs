@@ -7,6 +7,9 @@ public class SoundManager : Node
 	public static SoundManager GetInstance(){return _instance;}
 	private List<AudioStreamPlayer> soundInstances = new List<AudioStreamPlayer>();
 
+	[Export]
+	public bool isChiptune;
+
 	// Singleton pattern
 	public override void _Ready()
 	{
@@ -18,8 +21,11 @@ public class SoundManager : Node
 	}
 
 	// Spawn a sound
-	public void SpawnSound(string soundPath, float volumeDb = 1.0f)
+	public void SpawnSound(string soundName, float volumeDb = 1.0f)
 	{
+		if(isChiptune) soundName = "Chiptune/"+soundName+"Chiptune";
+		else soundName = "Cappella/"+soundName+"Cappella";
+		string soundPath = "res://Assets/Sound/"+soundName+".ogg";
 		AudioStream sound = (AudioStream)GD.Load(soundPath);
 		AudioStreamPlayer soundPlayer = new AudioStreamPlayer();
 		AddChild(soundPlayer);
@@ -27,13 +33,11 @@ public class SoundManager : Node
 		soundPlayer.Connect("finished", this, "_OnSoundFinished", new Godot.Collections.Array { soundPlayer });
 		soundPlayer.VolumeDb=volumeDb;
 		soundPlayer.Play();
-		GD.Print("Sound Spawned: "+ soundPath+" Volume: " +soundPlayer.VolumeDb);
 	}
 
 	// Handle the finished signal to free the AudioStreamPlayer
 	private void _OnSoundFinished(AudioStreamPlayer soundPlayer)
 	{
-		GD.Print("Sound Spawned: REMOVED");
 		soundInstances.Remove(soundPlayer);
 		soundPlayer.QueueFree();
 	}

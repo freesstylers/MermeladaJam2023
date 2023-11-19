@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ErrorCappella.ogg-e79925bd5788a1a3a8e9e1cfd4644cfa.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

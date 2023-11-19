@@ -492,6 +492,7 @@ layer = 0
 position = Vector2( 500, 100 )
 script = ExtResource( 2 )
 starScene = ExtResource( 3 )
+spawnSound = "StarFall"
 starLife = 2.0
 rocketLife = 2.0
 

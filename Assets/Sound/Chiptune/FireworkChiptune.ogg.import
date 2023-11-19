@@ -11,5 +11,5 @@ dest_files=[ "res://.import/FireworkChiptune.ogg-7a9fa4cf225a88fa3b15394de48f20e
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

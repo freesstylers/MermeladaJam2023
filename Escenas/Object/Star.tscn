@@ -20,12 +20,9 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 collision_layer = 0
 gravity_scale = 0.0
 script = ExtResource( 2 )
-preparedSound = "res://Assets/Audio/SFX/StarLost.wav"
-caughtSound = "res://Assets/Audio/SFX/StarLost.wav"
-deadSound = "res://Assets/Audio/SFX/StarLost.wav"
-preparedSoundChiptune = "res://Assets/Audio/SFX/StarLost.wav"
-caughtSoundChiptune = "res://Assets/Audio/SFX/StarLost.wav"
-deadSoundChiptune = "res://Assets/Audio/SFX/StarLost.wav"
+preparedSound = "Null"
+caughtSound = "TakeStar"
+deadSound = "Error"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

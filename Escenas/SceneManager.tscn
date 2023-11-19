@@ -21,6 +21,7 @@ totalTime = 120.0
 
 [node name="SoundManager" type="Node2D" parent="."]
 script = ExtResource( 5 )
+isChiptune = true
 
 [connection signal="endlessMode" from="CurrentScene/Control" to="." method="_on_Control_endlessMode"]
 [connection signal="normalMode" from="CurrentScene/Control" to="." method="_on_Control_normalMode"]

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/FireworkCappella.ogg-2a2ff1e136bc60aa19ad652f4b0f511
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

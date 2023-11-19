@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ButtonChiptune.ogg-548f04e0188a23c1cd039c70f7185458.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

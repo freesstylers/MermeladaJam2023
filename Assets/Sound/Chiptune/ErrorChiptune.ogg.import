@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ErrorChiptune.ogg-57e4333f0f6f83b77217fdcbd2083dc5.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

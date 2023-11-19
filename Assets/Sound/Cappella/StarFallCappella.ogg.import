@@ -11,5 +11,5 @@ dest_files=[ "res://.import/StarFallCappella.ogg-3f9286c586304744e8dfb2ddb50cd21
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

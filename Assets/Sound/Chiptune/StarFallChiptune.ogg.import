@@ -11,5 +11,5 @@ dest_files=[ "res://.import/StarFallChiptune.ogg-7553a62197d800171a86845cc2d8939
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

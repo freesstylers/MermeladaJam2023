@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ButtonCappella.ogg-4bddcb3c502f7a5a899dffd8be8e9121.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

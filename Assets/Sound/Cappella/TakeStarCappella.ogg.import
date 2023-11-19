@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TakeStarCappella.ogg-51b4f2426fa78ba4bf5b84cdebc861e
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

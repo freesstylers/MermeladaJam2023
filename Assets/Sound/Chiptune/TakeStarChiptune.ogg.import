@@ -11,5 +11,5 @@ dest_files=[ "res://.import/TakeStarChiptune.ogg-5d568bdfaf6d0d12900d0fa24b4442a
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

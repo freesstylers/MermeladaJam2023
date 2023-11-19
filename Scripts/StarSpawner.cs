@@ -14,6 +14,9 @@ public class StarSpawner : Area2D
 	[Export]
 	float finalSpawnTimeMin = 1;
 	
+	[Export]
+	public string spawnSound;
+	
 	private float maxTimeReduction;
 	private float minTimeReduction;
 	
@@ -75,6 +78,7 @@ public class StarSpawner : Area2D
 		starList.Insert(starList.Count, star);
 		AddChild(star);
 		GiveRandomPosDir(ref star);
+		SoundManager.GetInstance()?.SpawnSound(spawnSound);
 		star.Connect("PositionSignal", GetNode("/root/SceneManager/CurrentScene/Control2/Node2D/CanvasLayer2/ManoGato"), "_on_PositionSignal");
 	}
 	
