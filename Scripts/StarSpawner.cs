@@ -47,6 +47,8 @@ public class StarSpawner : Area2D
 	Color lightsFullColor = new Color(10,10,1,1);
 	float starInteractionStep = 2.5f;
 
+	AudioStreamPlayer backgroundMusic;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -67,7 +69,7 @@ public class StarSpawner : Area2D
 
 		captureStarJustPressed = false;
 		
-		SoundManager.GetInstance().SpawnMusic("ShootingStarsRakohus", -20);
+		backgroundMusic = SoundManager.GetInstance().SpawnMusic("ShootingStarsRakohus", -20);
 	}
 
   	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -89,6 +91,13 @@ public class StarSpawner : Area2D
 		cityLights.SelfModulate = lightsColor;
 		//GD.Print(lightsColor);
   	}
+
+	    // Called when the node is about to be freed. It's similar to Unity's OnDestroy.
+    public override void _ExitTree()
+    {
+        backgroundMusic.QueueFree();
+        base._ExitTree();
+    }
 	
 	private void SpawnStar() {
 		spawnTime = GD.Randi() % (spawnTimeMax+1-spawnTimeMin) + spawnTimeMin;
