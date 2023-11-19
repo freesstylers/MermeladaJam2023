@@ -20,7 +20,7 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 collision_layer = 0
 gravity_scale = 0.0
 script = ExtResource( 2 )
-preparedSound = "Null"
+preparedSound = "Prepared"
 caughtSound = "TakeStar"
 deadSound = "Error"
 

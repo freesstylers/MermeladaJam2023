@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PreparedCappella.ogg-1ede6b1b41e1873a32fe275a0caa3709.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Cappella/PreparedCappella.ogg"
+dest_files=[ "res://.import/PreparedCappella.ogg-1ede6b1b41e1873a32fe275a0caa3709.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

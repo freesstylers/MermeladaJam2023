@@ -81,7 +81,7 @@ public class Star : RigidBody2D
 					AdjustStarColors(new Color(1,1,0));
 					explosionReadyParticles.Emitting = true;
 					opacityDeathTime = (deathTime-deathCD)/4;
-					//SoundManager.GetInstance()?.SpawnSound(preparedSound);
+					SoundManager.GetInstance()?.SpawnSound(preparedSound);
 				}
 				else if(starManager.ShouldGetInput(this)) {
 					state = StarState.DEAD;
