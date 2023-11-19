@@ -19,6 +19,8 @@ public class Star : RigidBody2D
 	[Export]
 	bool debugPath = true;
 	
+	[Export]
+	string preparedSound = "";
 	float catchPercentage;
 	
 	public StarSpawner starManager=null;
@@ -58,8 +60,6 @@ public class Star : RigidBody2D
 		trailParticles = GetNode<CPUParticles2D>("StarPath/StarPathFollower/StarSprite/TrailParticles");
 		explosionParticles = GetNode<CPUParticles2D>("StarPath/StarPathFollower/StarSprite/ExplotionParticles");
 		explosionReadyParticles = GetNode<CPUParticles2D>("StarPath/StarPathFollower/StarSprite/ExplotionReadyParticles");
-
-		
 	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -74,6 +74,7 @@ public class Star : RigidBody2D
 					AdjustStarColors(new Color(1,1,0));
 					explosionReadyParticles.Emitting = true;
 					opacityDeathTime = (deathTime-deathCD)/4;
+					SoundManager.GetInstance()?.SpawnSound(preparedSound);
 				}
 				else if(starManager.ShouldGetInput(this)) {
 					state = StarState.DEAD;
