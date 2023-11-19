@@ -77,6 +77,7 @@ public class Star : RigidBody2D
 			case StarState.NOT_PREPARED:
 				if(deathCD >= deathTime*catchPercentage) {
 					state = StarState.PREPARED;
+					starManager.StarInteractionDone(state);
 					AdjustStarColors(new Color(1,1,0));
 					explosionReadyParticles.Emitting = true;
 					opacityDeathTime = (deathTime-deathCD)/4;
@@ -84,6 +85,7 @@ public class Star : RigidBody2D
 				}
 				else if(starManager.ShouldGetInput(this)) {
 					state = StarState.DEAD;
+					starManager.StarInteractionDone(state);
 					AdjustStarColors(new Color(1,0,0));
 					opacityDeathTime = (deathTime-deathCD)/4;
 					starManager.DeathOfAStar(this);
@@ -104,6 +106,7 @@ public class Star : RigidBody2D
 					float percentageBonusScore = baseScore * (1-((percentageFromTotal-catchPercentage)/(1-catchPercentage)));
 					GameManager.Instance.AddScore(baseScore + (int)percentageBonusScore);
 					state = StarState.CAUGHT;
+					starManager.StarInteractionDone(state);
 					AdjustStarColors(new Color(0,1,0));
 					opacityDeathTime = (deathTime-deathCD)/4;
 					starManager.DeathOfAStar(this);
