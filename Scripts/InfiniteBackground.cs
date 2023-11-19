@@ -9,6 +9,6 @@ public class InfiniteBackground : ParallaxBackground
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(float delta)
 	{
-		SetScrollBaseOffset(GetScrollBaseOffset() + new Vector2(scrollingSpeed*delta,0));
+		ScrollBaseOffset = ScrollBaseOffset + new Vector2(scrollingSpeed*delta,0);
 	}
 }

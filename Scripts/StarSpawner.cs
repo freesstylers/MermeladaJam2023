@@ -18,8 +18,6 @@ public class StarSpawner : Area2D
 	private float minTimeReduction;
 	
 	[Export]
-	float starSpeed = 150.0f;
-	[Export]
 	float starLife = 1.0f;
 	[Export]
 	float rocketLife = 1.5f;
@@ -77,6 +75,7 @@ public class StarSpawner : Area2D
 		starList.Insert(starList.Count, star);
 		AddChild(star);
 		GiveRandomPosDir(ref star);
+		star.Connect("PositionSignal", GetNode("/root/SceneManager/CurrentScene/Control2/Node2D/CanvasLayer2/ManoGato"), "_on_PositionSignal");
 	}
 	
 	private void GiveRandomPosDir(ref Star star) {

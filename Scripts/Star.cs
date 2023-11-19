@@ -11,13 +11,13 @@ public class Star : RigidBody2D
 		DEAD
 	}
 	
+	[Signal]
+	public delegate void PositionSignal(Vector2 pos);
+	
 	private StarState state;
 	
 	[Export]
 	float deathTime = 10.0f;
-
-	[Export]
-	bool debugPath = true;
 	
 	[Export]
 	string preparedSound = "";
@@ -50,6 +50,7 @@ public class Star : RigidBody2D
 
 	Path2D starPath;
 	PathFollow2D pathFollower;
+	Vector2 endPointToSignal;
 
 	float followPathSpeed = 1.0f;
 	private float pathPercentage = 0.0f;
@@ -100,6 +101,7 @@ public class Star : RigidBody2D
 				opacityDeathCD+=delta;
 				AdjustStarColors(new Color(1,1,0, opacityDeathTime/opacityDeathCD));
 				if(!caught && deathCD >= deathTime*catchPercentage && starManager.ShouldGetInput(this)) {
+					EmitSignal("PositionSignal", endPointToSignal);
 					caught = true;
 					int baseScore = 50;
 					float restPercentage = 1 - catchPercentage;
@@ -156,6 +158,8 @@ public class Star : RigidBody2D
 	}
 
 	public void CreatePath(Vector2 startPoint, Vector2 endPoint,float control1DistanceToOpposite, float curve1Strength,float control2DistanceToOpposite, float curve2Strength, int numSegments, float pathPercentageDonePerSecond){
+		endPointToSignal = (startPoint+endPoint)/2;
+		
 		Curve2D curve= new Curve2D();
 		float vectorMagnitude = (endPoint - startPoint).Length();
 		Vector2 controlPoint1 = startPoint + ((endPoint - startPoint)*control1DistanceToOpposite);
