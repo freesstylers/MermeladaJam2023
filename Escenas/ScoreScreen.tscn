@@ -24,46 +24,46 @@ custom_constants/margin_right = 100
 custom_constants/margin_top = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuContainer"]
-margin_top = 100.0
-margin_right = 500.0
+anchor_right = 1.0
 margin_bottom = 800.0
 custom_constants/separation = 15
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenuContainer/VBoxContainer"]
-margin_right = 500.0
-margin_bottom = 188.0
+margin_right = 600.0
+margin_bottom = 238.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_left = 100
 
 [node name="TextureRect" type="TextureRect" parent="MainMenuContainer/VBoxContainer/MarginContainer"]
-margin_left = 100.0
-margin_right = 500.0
-margin_bottom = 188.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 50.0
+margin_bottom = -50.0
 texture = ExtResource( 1 )
-stretch_mode = 4
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="MainMenuContainer/VBoxContainer"]
-margin_top = 203.0
-margin_right = 500.0
-margin_bottom = 239.0
+margin_top = 253.0
+margin_right = 600.0
+margin_bottom = 289.0
 custom_fonts/font = ExtResource( 6 )
 text = "Thanks for playing!"
 align = 1
 
 [node name="Label2" type="Label" parent="MainMenuContainer/VBoxContainer"]
-margin_top = 254.0
-margin_right = 500.0
-margin_bottom = 290.0
+margin_top = 304.0
+margin_right = 600.0
+margin_bottom = 340.0
 custom_fonts/font = ExtResource( 6 )
 text = "Final score"
 align = 1
 
 [node name="Label3" type="Label" parent="MainMenuContainer/VBoxContainer"]
-margin_top = 305.0
-margin_right = 500.0
-margin_bottom = 497.0
+margin_top = 355.0
+margin_right = 600.0
+margin_bottom = 547.0
 custom_fonts/font = ExtResource( 6 )
 text = "
 0
@@ -71,23 +71,24 @@ text = "
 
 "
 align = 1
+valign = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="MainMenuContainer/VBoxContainer"]
-margin_top = 512.0
-margin_right = 500.0
-margin_bottom = 700.0
+anchor_right = 1.0
+margin_top = 562.0
+margin_bottom = 800.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_left = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuContainer/VBoxContainer/MarginContainer2"]
-margin_left = 100.0
-margin_right = 500.0
-margin_bottom = 188.0
+anchor_left = 0.1
+anchor_right = 0.9
+margin_bottom = 238.0
 custom_constants/separation = 25
 
 [node name="BackToMainMenu" type="Button" parent="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
-margin_right = 400.0
+margin_right = 480.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
