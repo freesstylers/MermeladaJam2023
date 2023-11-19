@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ErrorCappella.ogg-e79925bd5788a1a3a8e9e1cfd4644cfa.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Cappella/ErrorCappella.ogg"
+dest_files=[ "res://.import/ErrorCappella.ogg-e79925bd5788a1a3a8e9e1cfd4644cfa.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ErrorChiptune.ogg-57e4333f0f6f83b77217fdcbd2083dc5.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Chiptune/ErrorChiptune.ogg"
+dest_files=[ "res://.import/ErrorChiptune.ogg-57e4333f0f6f83b77217fdcbd2083dc5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

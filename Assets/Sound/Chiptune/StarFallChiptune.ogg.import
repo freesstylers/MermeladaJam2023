@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/StarFallChiptune.ogg-7553a62197d800171a86845cc2d8939b.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Chiptune/StarFallChiptune.ogg"
+dest_files=[ "res://.import/StarFallChiptune.ogg-7553a62197d800171a86845cc2d8939b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

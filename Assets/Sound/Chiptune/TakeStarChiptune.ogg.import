@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TakeStarChiptune.ogg-5d568bdfaf6d0d12900d0fa24b4442a3.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Chiptune/TakeStarChiptune.ogg"
+dest_files=[ "res://.import/TakeStarChiptune.ogg-5d568bdfaf6d0d12900d0fa24b4442a3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

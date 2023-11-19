@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/FireworkChiptune.ogg-7a9fa4cf225a88fa3b15394de48f20e6.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Chiptune/FireworkChiptune.ogg"
+dest_files=[ "res://.import/FireworkChiptune.ogg-7a9fa4cf225a88fa3b15394de48f20e6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

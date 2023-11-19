@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ButtonCappella.ogg-4bddcb3c502f7a5a899dffd8be8e9121.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Cappella/ButtonCappella.ogg"
+dest_files=[ "res://.import/ButtonCappella.ogg-4bddcb3c502f7a5a899dffd8be8e9121.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
