@@ -66,6 +66,8 @@ public class StarSpawner : Area2D
 		minTimeReduction = (finalSpawnTimeMin - spawnTimeMin)/gameTime;
 
 		captureStarJustPressed = false;
+		
+		SoundManager.GetInstance().SpawnMusic("ShootingStarsRakohus", -20);
 	}
 
   	// Called every frame. 'delta' is the elapsed time since the previous frame.

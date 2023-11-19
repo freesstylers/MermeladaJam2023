@@ -27,18 +27,27 @@ public class SoundManager : Node
 	}
 
 	// Spawn a sound
-	public void SpawnSound(string soundName, float volumeDb = 1.0f)
+	public void SpawnSound(string soundName, float volumeDb = 10.0f)
 	{
 		if(isChiptune) soundName = "Chiptune/"+soundName+"Chiptune";
 		else soundName = "Cappella/"+soundName+"Cappella";
 		string soundPath = "res://Assets/Sound/"+soundName+".ogg";
+		CreateAudioStream(soundPath, volumeDb);
+	}
+	
+	public void SpawnMusic(string musicName, float volumeDb) {
+		string soundPath = "res://Assets/Sound/Music/"+musicName+".wav";
+		CreateAudioStream(soundPath, volumeDb);
+	}
+	
+	private void CreateAudioStream(string soundPath, float volumeDb) {
 		AudioStream sound = (AudioStream)GD.Load(soundPath);
 		AudioStreamPlayer soundPlayer = new AudioStreamPlayer();
 		AddChild(soundPlayer);
 		soundPlayer.Stream = sound;
 		soundPlayer.Connect("finished", this, "_OnSoundFinished", new Godot.Collections.Array { soundPlayer });
-		soundPlayer.VolumeDb=volumeDb;
 		soundPlayer.Play();
+		soundPlayer.VolumeDb=volumeDb;
 	}
 
 	// Handle the finished signal to free the AudioStreamPlayer
