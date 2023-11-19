@@ -47,10 +47,11 @@ public class GameManager : Node
 				finished = true;
 				sceneManager_.Call("onEnd");
 			}
-		} else if(_instance.endlessMode) {
+		} 
+		else if(_instance.endlessMode) {
 			if(Input.IsActionJustPressed("Escape")) {
 				finished = true;	
-				sceneManager_.Call("toMainMenu");
+				sceneManager_.Call("onEnd");
 			}
 		}
   	}
