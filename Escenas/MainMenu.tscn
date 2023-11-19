@@ -221,6 +221,8 @@ custom_fonts/font = ExtResource( 6 )
 text = "BACK"
 script = ExtResource( 7 )
 
+[connection signal="endlessMode" from="." to="." method="_on_Control_endlessMode"]
+[connection signal="normalMode" from="." to="." method="_on_Control_normalMode"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/NormalMode" to="." method="NormalMode"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/NormalMode" to="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/NormalMode" method="_on_NormalMode_button_down"]
 [connection signal="button_down" from="MainMenuContainer/VBoxContainer/MarginContainer2/VBoxContainer/EndlessMode" to="." method="EndlessMode"]
