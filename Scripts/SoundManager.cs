@@ -19,6 +19,12 @@ public class SoundManager : Node
 		else
 			QueueFree();
 	}
+	
+	public override void _Process(float delta) {
+		if(Input.IsActionJustPressed("ChangeSound")) {
+			isChiptune = !isChiptune;
+		}
+	}
 
 	// Spawn a sound
 	public void SpawnSound(string soundName, float volumeDb = 1.0f)
