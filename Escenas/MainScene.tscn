@@ -446,10 +446,10 @@ script = ExtResource( 10 )
 scrollingSpeed = 20.0
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_mirroring = Vector2( 1798, 0 )
+motion_mirroring = Vector2( 3600, 0 )
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
-position = Vector2( 899.861, 399.5 )
+position = Vector2( 1800, 399.5 )
 scale = Vector2( 0.622096, 0.624219 )
 texture = ExtResource( 5 )
 
