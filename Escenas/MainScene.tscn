@@ -1,5 +1,6 @@
 [gd_scene load_steps=25 format=2]
 
+[ext_resource path="res://Assets/Anims/ParpadeoArribaIn.anim" type="Animation" id=1]
 [ext_resource path="res://Scripts/StarSpawner.cs" type="Script" id=2]
 [ext_resource path="res://Escenas/Object/Star.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/cityBackground.png" type="Texture" id=4]
@@ -13,70 +14,13 @@
 [ext_resource path="res://Scripts/MovimientoGato.gd" type="Script" id=12]
 [ext_resource path="res://Assets/Parpado.png" type="Texture" id=13]
 [ext_resource path="res://Assets/manoGato.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Anims/ParpadeoAbajoIn.anim" type="Animation" id=15]
+[ext_resource path="res://Assets/Anims/ParpadeoArribaOut.anim" type="Animation" id=16]
+[ext_resource path="res://Assets/Anims/ParpadeoAbajoOut.anim" type="Animation" id=17]
 
 [sub_resource type="Environment" id=11]
 background_mode = 4
 glow_enabled = true
-
-[sub_resource type="Animation" id=3]
-resource_name = "ParpadeoAbajoIn"
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer3/Parpado2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 600, 1319 ), Vector2( 600, 900 ), Vector2( 600, 1050 ), Vector2( 600, 900 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "ParpadeoAbajoOut"
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer3/Parpado2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 600, 900 ), Vector2( 600, 1319 ) ]
-}
-
-[sub_resource type="Animation" id=1]
-resource_name = "ParpadeoArribaIn"
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer3/Parpado1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -519 ), Vector2( 0, -150 ), Vector2( 0, -300 ), Vector2( 0, -150 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "ParpadeoArribaOut"
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer3/Parpado1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -150 ), Vector2( 0, -519 ) ]
-}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -227,7 +171,7 @@ margin_right = 424.0
 margin_bottom = 55.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
-text = "x 254"
+text = "254"
 script = ExtResource( 9 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
@@ -344,10 +288,10 @@ texture = ExtResource( 13 )
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
-anims/ParpadeoAbajoIn = SubResource( 3 )
-anims/ParpadeoAbajoOut = SubResource( 4 )
-anims/ParpadeoArribaIn = SubResource( 1 )
-anims/ParpadeoArribaOut = SubResource( 5 )
+anims/ParpadeoAbajoIn = ExtResource( 15 )
+anims/ParpadeoAbajoOut = ExtResource( 17 )
+anims/ParpadeoArribaIn = ExtResource( 1 )
+anims/ParpadeoArribaOut = ExtResource( 16 )
 anims/RESET = SubResource( 2 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Node2D"]
