@@ -258,8 +258,8 @@ z_index = 1
 texture = ExtResource( 14 )
 centered = false
 script = ExtResource( 12 )
-moveTime = 0.25
-stopTime = 0.25
+moveTime = 0.1
+stopTime = 0.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Node2D"]
 layer = 2

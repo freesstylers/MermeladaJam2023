@@ -81,7 +81,7 @@ public class Star : RigidBody2D
 					AdjustStarColors(new Color(1,1,0));
 					explosionReadyParticles.Emitting = true;
 					opacityDeathTime = (deathTime-deathCD)/4;
-					SoundManager.GetInstance()?.SpawnSound(preparedSound);
+					//SoundManager.GetInstance()?.SpawnSound(preparedSound);
 				}
 				else if(starManager.ShouldGetInput(this)) {
 					state = StarState.DEAD;
@@ -96,7 +96,7 @@ public class Star : RigidBody2D
 				opacityDeathCD+=delta;
 				AdjustStarColors(new Color(1,1,0, opacityDeathTime/opacityDeathCD));
 				if(!caught && deathCD >= deathTime*catchPercentage && starManager.ShouldGetInput(this)) {
-					EmitSignal("PositionSignal", endPointToSignal);
+					EmitSignal("PositionSignal", starSprite.GlobalPosition);
 					caught = true;
 					int baseScore = 50;
 					float restPercentage = 1 - catchPercentage;
