@@ -49,7 +49,6 @@ func _on_timer_timeout():
 	timer.stop()
 	$Node2D/AnimationPlayer.play("ParpadeoArribaIn")
 	$Node2D/AnimationPlayer2.play("ParpadeoAbajoIn")
-	print ("Time is up!")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

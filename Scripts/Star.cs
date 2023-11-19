@@ -118,7 +118,6 @@ public class Star : RigidBody2D
 		//Has it finished its path?
 		if (pathPercentage > 1.0f){
 			starManager.DeathOfAStar(this);
-			GD.Print("muerta");
 			QueueFree();
 		}
   	}

@@ -83,6 +83,9 @@ public class StarSpawner : Area2D
 		Vector2 direction = new Vector2(0,0);
 		int randomX = 0;
 		int randomY = 0;
+		
+		float control1Distance = 0.0f, control2Distance = 0.0f;
+		float curve1Strength = 0.0f, curve2Strength = 0.0f;
 		//Estrella fugaz
 		if(GD.Randi()%2 == 0) {
 			bool fromRight = (GD.Randi()%2 == 0);
@@ -104,11 +107,17 @@ public class StarSpawner : Area2D
 			star.GlobalPosition = new Vector2(0, 0);
 			
 			direction = new Vector2(0, -1);
+			
+			control1Distance = GD.Randf()*0.25f;
+			control2Distance = GD.Randf()*0.25f;
+			curve1Strength = GD.Randf()*0.5f;
+			curve2Strength = GD.Randf()*0.5f;
 		}
+		
 		direction = direction.Normalized();		
 		Vector2 startPoint = new Vector2(randomX, randomY);
 		Vector2 endPoint = startPoint + (direction*GetViewport().Size.y);
-		star.CreatePath(startPoint, endPoint, 0.25f, -0.5f, 0.25f, 0.5f, 20, 2f);
+		star.CreatePath(startPoint, endPoint, control1Distance, curve1Strength, control2Distance, curve2Strength, 20, 2f);
 	}
 	
 	public void DeathOfAStar(Star star) {
