@@ -21,6 +21,18 @@ public class Star : RigidBody2D
 	
 	[Export]
 	string preparedSound = "";
+	[Export]
+	string caughtSound = "";
+	[Export]
+	string deadSound = "";
+
+		[Export]
+	string preparedSoundChiptune = "";
+	[Export]
+	string caughtSoundChiptune = "";
+	[Export]
+	string deadSoundChiptune = "";
+
 	float catchPercentage;
 	
 	public StarSpawner starManager=null;
@@ -74,13 +86,14 @@ public class Star : RigidBody2D
 					AdjustStarColors(new Color(1,1,0));
 					explosionReadyParticles.Emitting = true;
 					opacityDeathTime = (deathTime-deathCD)/4;
-					SoundManager.GetInstance()?.SpawnSound(preparedSound);
+					SoundManager.GetInstance()?.SpawnSound(true ? preparedSound : preparedSoundChiptune);
 				}
 				else if(starManager.ShouldGetInput(this)) {
 					state = StarState.DEAD;
 					AdjustStarColors(new Color(1,0,0));
 					opacityDeathTime = (deathTime-deathCD)/4;
 					starManager.DeathOfAStar(this);
+					SoundManager.GetInstance()?.SpawnSound(true ? deadSound: deadSoundChiptune);
 				}
 				break;
 			case StarState.PREPARED:
@@ -100,6 +113,7 @@ public class Star : RigidBody2D
 					opacityDeathTime = (deathTime-deathCD)/4;
 					starManager.DeathOfAStar(this);
 					explosionParticles.Emitting = true;
+					SoundManager.GetInstance()?.SpawnSound(true ? caughtSound : caughtSoundChiptune);
 				}
 				break;
 			case StarState.CAUGHT:

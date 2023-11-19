@@ -18,14 +18,14 @@ public class SoundManager : Node
     }
 
 	// Spawn a sound
-	public void SpawnSound(string soundPath)
+	public void SpawnSound(string soundPath, float volumeDb = 1.0f)
 	{
 		AudioStream sound = (AudioStream)GD.Load(soundPath);
 		AudioStreamPlayer soundPlayer = new AudioStreamPlayer();
 		AddChild(soundPlayer);
 		soundPlayer.Stream = sound;
         soundPlayer.Connect("finished", this, "_OnSoundFinished", new Godot.Collections.Array { soundPlayer });
-        soundPlayer.VolumeDb=0.5f;
+        soundPlayer.VolumeDb=volumeDb;
 		soundPlayer.Play();
 		GD.Print("Sound Spawned: "+ soundPath+" Volume: " +soundPlayer.VolumeDb);
 	}
