@@ -34,7 +34,12 @@ func _process(delta):
 		$CanvasLayer/HBoxContainer/MarginContainer2/HBoxContainer2/Label4.text = str(secTime).pad_decimals(0)
 	pass
 	
-
+func _input(event):
+	if event is InputEventScreenTouch:
+		Input.action_press("Catch")
+	elif event is InputEventScreenDrag:
+		if GameManager._instance.endlessMode:
+			Input.action_press("Escape")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = Timer.new()
@@ -44,7 +49,11 @@ func _ready():
 	timer.start()
 	timer.connect("timeout", self, "_on_timer_timeout")
 	
+	GameManager = get_tree().get_root().get_node("SceneManager/GameManager")._instance
+	
 	pass # Replace with function body.
+
+var GameManager
 
 func _on_timer_timeout():
 	timer.stop()

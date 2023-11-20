@@ -15,6 +15,9 @@ func _ready():
 
 func NormalMode():
 	emit_signal("normalMode")
+	get_tree().get_root().get_node("SceneManager/GameManager")._instance.playing = true
+	get_tree().get_root().get_node("SceneManager/GameManager")._instance.finished = false
+	get_tree().get_root().get_node("SceneManager/GameManager")._instance.ResetPendingTime()
 	get_tree().get_root().get_node("SceneManager/GameManager")._instance.SetScore(0)
 	pass # Replace with function body.
 

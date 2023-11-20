@@ -35,23 +35,27 @@ public class GameManager : Node
 		sceneManager_ = GetTree().Root.GetNode("SceneManager");
 	}
 
+	bool playing = false;
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
   	public override void _Process(float delta)
-  	{	
-		if (!_instance.endlessMode && !finished)
-		{
-			pendingTime -= delta;
-			
-			if (pendingTime <= 0)
+  	{			
+		if (_instance.playing)
+		{			
+			if (!_instance.endlessMode && !_instance.finished)
 			{
-				finished = true;
-				sceneManager_.Call("onEnd");
-			}
-		} 
-		else if(_instance.endlessMode) {
-			if(Input.IsActionJustPressed("Escape")) {
-				finished = true;	
-				sceneManager_.Call("onEnd");
+				_instance.pendingTime -= delta;
+				
+				if (_instance.pendingTime <= 0)
+				{
+					_instance.finished = true;
+					sceneManager_.Call("onEnd");
+				}
+			} 
+			else if(_instance.endlessMode) {
+				if(Input.IsActionJustPressed("Escape")) {
+					_instance.finished = true;	
+					sceneManager_.Call("onEnd");
+				}
 			}
 		}
   	}
@@ -70,5 +74,10 @@ public class GameManager : Node
 	
 	public float GetTotalTime() {
 		return totalTime;
+	}
+	
+	public void ResetPendingTime()
+	{
+		_instance.pendingTime = 125;
 	}
 }

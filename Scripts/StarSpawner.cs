@@ -71,7 +71,7 @@ public class StarSpawner : Area2D
 		
 		backgroundMusic = SoundManager.GetInstance().SpawnMusic("ShootingStarsRakohus", -20);
 	}
-
+		
   	// Called every frame. 'delta' is the elapsed time since the previous frame.
   	public override void _Process(float delta)
   	{

@@ -285,12 +285,12 @@ margin_bottom = 362.0
 
 [node name="ColorRect" type="ColorRect" parent="HowToPlayContainer"]
 margin_right = 520.0
-margin_bottom = 712.0
+margin_bottom = 746.0
 color = Color( 0.509804, 0.509804, 0.509804, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HowToPlayContainer"]
 margin_right = 520.0
-margin_bottom = 712.0
+margin_bottom = 746.0
 
 [node name="Label" type="Label" parent="HowToPlayContainer/VBoxContainer"]
 margin_right = 520.0
@@ -304,30 +304,31 @@ valign = 1
 [node name="Label5" type="Label" parent="HowToPlayContainer/VBoxContainer"]
 margin_top = 79.0
 margin_right = 520.0
-margin_bottom = 661.0
+margin_bottom = 700.0
 custom_fonts/font = ExtResource( 6 )
-text = "STARS WILL APPEAR ON
-SCREEN AND YOU WILL
-HAVE TO POP THEM WHEN
-THEY TURN YELLOW
+text = "POP THE APPEARING 
+STARS WHEN THEY 
+TURN YELLOW
 
-YOU GET MORE POINTS IF
-YOU POP THEM CLOSER
-TO THEIR EXPLOSION
+MORE POINTS IF POPPED
+CLOSER TO EXPLODING
 
-PRESS SPACE or CLICK
-or touch screen to 
-catch
+space or click or tap
+the screen top pop
+starts
 
-ENJOY THE EXPERIENCE!
-"
+escape or drag the
+screen to exit endless
+mode
+
+ENJOY THE EXPERIENCE!"
 align = 1
 valign = 1
 
 [node name="Back" type="Button" parent="HowToPlayContainer/VBoxContainer"]
-margin_top = 665.0
+margin_top = 704.0
 margin_right = 520.0
-margin_bottom = 707.0
+margin_bottom = 746.0
 custom_fonts/font = ExtResource( 6 )
 text = "BACK"
 script = ExtResource( 7 )

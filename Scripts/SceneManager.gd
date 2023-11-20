@@ -24,6 +24,9 @@ func _on_CanvasLayer_transitioned():
 
 func _on_Control_normalMode():
 	endless = false
+	get_tree().get_root().get_node("SceneManager/GameManager")._instance.playing = true
+	get_tree().get_root().get_node("SceneManager/GameManager")._instance.finished = false
+	get_tree().get_root().get_node("SceneManager/GameManager")._instance.ResetPendingTime()
 	$CanvasLayer.transition()
 	pass # Replace with function body.
 
